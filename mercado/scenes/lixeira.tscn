@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bwhate8164bt6"]
+
+[ext_resource type="Texture2D" uid="uid://24hyq4vlxuda" path="res://mercado/art/lixeira.png" id="1_2wx2b"]
+[ext_resource type="Script" uid="uid://ddknpjni15oy6" path="res://mercado/codico/lixeira.gd" id="1_agult"]
+[ext_resource type="AudioStream" uid="uid://cy0kdj5rhdt06" path="res://mercado/art/Open Trash song.wav" id="3_v02cv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agult"]
+size = Vector2(33, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v02cv"]
+size = Vector2(31, 44)
+
+[node name="Lixeira" type="Node2D" unique_id=226262692]
+
+[node name="Lixeira" type="Area2D" parent="." unique_id=1859384691]
+script = ExtResource("1_agult")
+
+[node name="Sprite2D" type="Sprite2D" parent="Lixeira" unique_id=527472993]
+scale = Vector2(0.25467917, 0.22466432)
+texture = ExtResource("1_2wx2b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lixeira" unique_id=1985491965]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_agult")
+
+[node name="CorpoSolido" type="StaticBody2D" parent="Lixeira" unique_id=193045550]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lixeira/CorpoSolido" unique_id=14629273]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_v02cv")
+debug_color = Color(0.9483916, 0.19344717, 0.31983805, 0.41960785)
+
+[node name="SomDepositar" type="AudioStreamPlayer" parent="Lixeira" unique_id=1786103612]
+stream = ExtResource("3_v02cv")
+
+[connection signal="body_entered" from="Lixeira" to="Lixeira" method="_on_body_entered"]
+[connection signal="body_exited" from="Lixeira" to="Lixeira" method="_on_body_exited"]

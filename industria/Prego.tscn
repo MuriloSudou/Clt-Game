@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://fl8bc3pedi24"]
+
+[ext_resource type="Script" uid="uid://cp2ii1qj7qnyg" path="res://industria/prego.gd" id="1_dqdvl"]
+[ext_resource type="Texture2D" uid="uid://dwf5jq28ncf7m" path="res://industria/prego.png" id="2_xyp1s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cot6j"]
+size = Vector2(9, 18)
+
+[node name="prego" type="Area2D" unique_id=860778513]
+script = ExtResource("1_dqdvl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=905168000]
+position = Vector2(0, 1.9073486e-06)
+scale = Vector2(0.027542375, 0.032844983)
+texture = ExtResource("2_xyp1s")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=702642649]
+shape = SubResource("RectangleShape2D_cot6j")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=414043713]
+rect = Rect2(-5, -9, 10, 18)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://c5od7l00ghd1t"]
+
+[ext_resource type="Script" uid="uid://bm4y8kxgk8mpr" path="res://mercado/scenes/zona_reposicao.gd" id="1_18mvp"]
+[ext_resource type="Texture2D" uid="uid://dvb4whkm1b6ko" path="res://mercado/art/Arrow Down.png" id="2_mudv1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sv08q"]
+size = Vector2(70, 95.75)
+
+[node name="ZonaReposicao" type="Node2D" unique_id=1312109745 groups=["gondolas"]]
+
+[node name="ZonaReposicao" type="Area2D" parent="." unique_id=321423918]
+script = ExtResource("1_18mvp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaReposicao" unique_id=73601981]
+position = Vector2(0, -12.125)
+shape = SubResource("RectangleShape2D_sv08q")
+
+[node name="Label" type="Label" parent="ZonaReposicao" unique_id=1416117894]
+offset_left = -57.0
+offset_top = -4.0
+offset_right = 60.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.030041082, 0.023177989, 0.0023930385, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 14
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 24
+text = "[ E ] Repor"
+
+[node name="ProgressBar" type="ProgressBar" parent="ZonaReposicao" unique_id=1316243603]
+offset_left = -55.0
+offset_top = -39.0
+offset_right = 61.0
+offset_bottom = -7.0
+theme_override_colors/font_outline_color = Color(0.89078844, 0.13129443, 0.24997824, 1)
+theme_override_font_sizes/font_size = 20
+show_percentage = false
+
+[node name="Seta" type="Sprite2D" parent="ZonaReposicao" unique_id=43925844]
+position = Vector2(3, -56)
+scale = Vector2(0.1279632, 0.18682627)
+texture = ExtResource("2_mudv1")
+
+[connection signal="body_entered" from="ZonaReposicao" to="ZonaReposicao" method="_on_body_entered"]
+[connection signal="body_exited" from="ZonaReposicao" to="ZonaReposicao" method="_on_body_exited"]

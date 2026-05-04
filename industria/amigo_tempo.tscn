@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cpsj3dja5b7f6"]
+
+[ext_resource type="Script" uid="uid://dmt3q0u7wm8rr" path="res://amigo_tempo.gd" id="1_b85ey"]
+[ext_resource type="Texture2D" uid="uid://bqes3jnfabt6g" path="res://coelhosheet.png" id="1_rq4gk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b85ey"]
+size = Vector2(37, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc7mg"]
+atlas = ExtResource("1_rq4gk")
+region = Rect2(0, 1474, 64, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptudd"]
+atlas = ExtResource("1_rq4gk")
+region = Rect2(64, 1474, 64, 67)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p5cnh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc7mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptudd")
+}],
+"loop": true,
+"name": &"paradoE",
+"speed": 5.0
+}]
+
+[node name="AmigoTempo" type="Area2D" unique_id=965168435]
+script = ExtResource("1_b85ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1987279693]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_b85ey")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=728989389]
+sprite_frames = SubResource("SpriteFrames_p5cnh")
+animation = &"paradoE"
+frame_progress = 0.009074104

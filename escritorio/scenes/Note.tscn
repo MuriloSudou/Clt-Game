@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cj7n2xee5jxlk"]
+
+[ext_resource type="Texture2D" uid="uid://ck2ea1kwewdya" path="res://art/pixel-heart.png" id="1_ku001"]
+[ext_resource type="Script" uid="uid://cp5mpktqkrn5d" path="res://codico/Note.gd" id="2_tqwf5"]
+
+[node name="Note" type="Sprite2D" unique_id=536194947]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_ku001")
+script = ExtResource("2_tqwf5")

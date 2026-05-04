@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dbo5hisy8nlew"]
+
+[ext_resource type="Script" uid="uid://dk46e4ku8esqk" path="res://newminigame/codico/snake_game.gd" id="1_iut4f"]
+
+[node name="SnakeGame" type="Node2D" unique_id=121407006]
+script = ExtResource("1_iut4f")
+
+[node name="Snake" type="Node2D" parent="." unique_id=1828680662]
+
+[node name="Food" type="ColorRect" parent="." unique_id=1825750265]
+custom_minimum_size = Vector2(20, 20)
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.077836014, 0.9999998, 0.37032342, 1)
+
+[node name="Timer" type="Timer" parent="." unique_id=1359696057]
+wait_time = 0.15
+autostart = true
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=992709837]
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 52.0
+offset_bottom = 30.0
+
+[node name="GameOverLabel" type="Label" parent="." unique_id=742290729]
+offset_left = 276.0
+offset_top = 172.0
+offset_right = 316.0
+offset_bottom = 195.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

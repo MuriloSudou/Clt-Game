@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://d23fisj3d1duf"]
+
+[ext_resource type="Script" uid="uid://dgifshnrsi2xx" path="res://mercado/codico/workselec.gd" id="1_1nvq1"]
+[ext_resource type="Texture2D" uid="uid://d16set3712gf5" path="res://mercado/art/workSelect.png" id="2_46035"]
+[ext_resource type="Texture2D" uid="uid://coqavwuqv1mja" path="res://mercado/art/Button Mercado.png" id="3_520h7"]
+[ext_resource type="Texture2D" uid="uid://bxvpmeedkylxl" path="res://mercado/art/Button Industria.png" id="4_kedfw"]
+[ext_resource type="Texture2D" uid="uid://d4gwk01516dc6" path="res://mercado/art/Escritório Button.png" id="5_xceeb"]
+
+[node name="SelecionarTrabalho" type="Node2D" unique_id=1512191027]
+
+[node name="MainMenu" type="Control" parent="." unique_id=252298535]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1nvq1")
+metadata/_edit_use_anchors_ = true
+
+[node name="SairDialog" type="ConfirmationDialog" parent="MainMenu" unique_id=2069734542]
+
+[node name="TextureRect2" type="TextureRect" parent="MainMenu" unique_id=62766239]
+layout_mode = 0
+offset_left = -50.0
+offset_top = -2.0
+offset_right = 1222.6776
+offset_bottom = 725.0
+texture = ExtResource("2_46035")
+expand_mode = 1
+
+[node name="Mercado" type="Button" parent="MainMenu" unique_id=508029528]
+layout_mode = 0
+offset_left = 686.0
+offset_top = 261.0
+offset_right = 1125.0
+offset_bottom = 425.0
+icon = ExtResource("3_520h7")
+flat = true
+expand_icon = true
+
+[node name="Industria" type="Button" parent="MainMenu" unique_id=682082459]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 263.0
+offset_right = 517.0
+offset_bottom = 427.0
+icon = ExtResource("4_kedfw")
+flat = true
+expand_icon = true
+
+[node name="Escritorio" type="Button" parent="MainMenu" unique_id=1336192811]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 444.0
+offset_right = 850.0
+offset_bottom = 600.0
+icon = ExtResource("5_xceeb")
+flat = true
+expand_icon = true
+
+[connection signal="confirmed" from="MainMenu/SairDialog" to="MainMenu" method="_on_sair_dialog_confirmed"]
+[connection signal="pressed" from="MainMenu/Mercado" to="MainMenu" method="_on_sair_pressed"]
+[connection signal="pressed" from="MainMenu/Industria" to="MainMenu" method="_on_jogar_pressed"]
+[connection signal="pressed" from="MainMenu/Escritorio" to="MainMenu" method="_on_escritorio_pressed"]

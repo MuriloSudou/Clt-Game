@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://b5yp42qe3cm5t"]
+
+[ext_resource type="Script" uid="uid://2fgoplywx80h" path="res://escritorio/codico/game.gd" id="1_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://78fm05eb01x" path="res://escritorio/art/seta_esquerda.png" id="3_p57ef"]
+[ext_resource type="Texture2D" uid="uid://cm15sdaankh0t" path="res://escritorio/art/seta_baixo.png" id="4_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://cdlwsukblwhc1" path="res://escritorio/art/seta_cima.png" id="5_gee14"]
+[ext_resource type="Texture2D" uid="uid://brqy42ut20uur" path="res://escritorio/art/seta_direita.png" id="6_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://1tyoe7o1nwu6" path="res://escritorio/art/SPRITES_ANIMACAO/player_down.png" id="7_q2ehk"]
+[ext_resource type="AudioStream" uid="uid://b1v645hnu2kkw" path="res://escritorio/art/Pico - Friday Night Funkin' OST - Kawai Sprite (youtube).MP3" id="7_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://cksiujwre7gmw" path="res://escritorio/art/SPRITES_ANIMACAO/player_idle_1.png" id="8_4au3j"]
+[ext_resource type="Texture2D" uid="uid://djybe7gdiv2de" path="res://escritorio/art/SPRITES_ANIMACAO/player_idle_2.png" id="10_ir15t"]
+[ext_resource type="Texture2D" uid="uid://b14juxajknpwt" path="res://escritorio/art/SPRITES_ANIMACAO/player_left.png" id="11_ca42v"]
+[ext_resource type="Texture2D" uid="uid://dr37uxgugl7u" path="res://escritorio/art/SPRITES_ANIMACAO/player_right.png" id="12_rysoc"]
+[ext_resource type="Texture2D" uid="uid://byinstspn7kv0" path="res://escritorio/art/SPRITES_ANIMACAO/player_up.png" id="13_ssvqc"]
+[ext_resource type="Texture2D" uid="uid://cae8ti813gtcs" path="res://escritorio/art/SPRITES_ANIMACAO/chefe_idle1.png" id="14_ir15t"]
+[ext_resource type="Texture2D" uid="uid://1r4btssy734t" path="res://escritorio/art/SPRITES_ANIMACAO/chefe_idle2.png" id="15_ca42v"]
+[ext_resource type="Texture2D" uid="uid://dpxsp1adieksv" path="res://escritorio/art/SPRITES_ANIMACAO/chefe_laugh.png" id="16_ca42v"]
+[ext_resource type="Texture2D" uid="uid://d4mgen4maollc" path="res://escritorio/art/fundo_escritorio.png" id="17_rysoc"]
+[ext_resource type="PackedScene" uid="uid://cir64bu4r6f25" path="res://mercado/scenes/menu.tscn" id="17_se3tc"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_yqjtg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_264po"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_q2ehk")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_4au3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ir15t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_ca42v")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_rysoc")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_ssvqc")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvuet"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_ir15t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ca42v")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_ca42v")
+}],
+"loop": true,
+"name": &"laugh",
+"speed": 5.0
+}]
+
+[node name="Game" type="Node2D" unique_id=1980564672]
+script = ExtResource("1_lnu2h")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=757731669]
+stream = ExtResource("7_u5sy4")
+
+[node name="Label" type="Label" parent="." unique_id=2106540334]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 556.0
+offset_top = -11.5
+offset_right = 557.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="StrumLine" type="Sprite2D" parent="." unique_id=1058724680]
+position = Vector2(575, 500)
+scale = Vector2(1156, 5)
+texture = SubResource("CanvasTexture_yqjtg")
+
+[node name="Arrows" type="Node2D" parent="." unique_id=31381553]
+
+[node name="Left" type="Sprite2D" parent="Arrows" unique_id=150538430]
+position = Vector2(150, 500)
+texture = ExtResource("3_p57ef")
+
+[node name="Down" type="Sprite2D" parent="Arrows" unique_id=958465906]
+position = Vector2(400, 500)
+texture = ExtResource("4_u5sy4")
+
+[node name="Up" type="Sprite2D" parent="Arrows" unique_id=1736451437]
+position = Vector2(700, 500)
+texture = ExtResource("5_gee14")
+
+[node name="Right" type="Sprite2D" parent="Arrows" unique_id=1962119648]
+position = Vector2(1000, 500)
+texture = ExtResource("6_0tnpc")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=403934197]
+stream = ExtResource("7_u5sy4")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=708758941]
+offset_left = 556.0
+offset_right = 596.0
+offset_bottom = 23.0
+
+[node name="PlayerBar" type="ColorRect" parent="." unique_id=125772373]
+visible = false
+offset_left = 300.0
+offset_top = 50.0
+offset_right = 900.0
+offset_bottom = 80.0
+color = Color(0.36862746, 0.80784315, 0.16078432, 1)
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=800877265]
+offset_left = 300.0
+offset_top = 50.0
+offset_right = 900.0
+offset_bottom = 80.0
+value = 50.0
+
+[node name="Player" type="AnimatedSprite2D" parent="." unique_id=2021564465]
+position = Vector2(884, 261)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_264po")
+animation = &"idle"
+
+[node name="AnimTimer" type="Timer" parent="." unique_id=718580373]
+wait_time = 0.2
+one_shot = true
+
+[node name="Enemy" type="AnimatedSprite2D" parent="." unique_id=2108610152]
+position = Vector2(285, 259.75)
+scale = Vector2(0.4319484, 0.43194842)
+sprite_frames = SubResource("SpriteFrames_kvuet")
+animation = &"idle"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1931166027]
+show_behind_parent = true
+position = Vector2(583, 324.46875)
+scale = Vector2(0.85017914, 0.85017914)
+texture = ExtResource("17_rysoc")
+
+[node name="Menu" parent="." unique_id=1437134340 instance=ExtResource("17_se3tc")]

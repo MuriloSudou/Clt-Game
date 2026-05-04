@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://buxyb5vm4dirf"]
+
+[ext_resource type="Script" uid="uid://jgvswknl1h1v" path="res://mercado/codico/main_menu.gd" id="1_wu84c"]
+[ext_resource type="Texture2D" uid="uid://iqg1lvrrakiw" path="res://mercado/art/Fundo.png" id="2_8ln24"]
+[ext_resource type="Texture2D" uid="uid://b0cf5mrll4ew1" path="res://mercado/art/pedirContaButton.webp" id="3_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://bogd5svuhpmf8" path="res://mercado/art/jogarButtton.png" id="4_oa1go"]
+[ext_resource type="Texture2D" uid="uid://dfdo5l5aawfku" path="res://mercado/art/Atestado Button.png" id="5_drchv"]
+
+[node name="Node2D" type="Node2D" unique_id=1470758799]
+
+[node name="MainMenu" type="Control" parent="." unique_id=1537395836]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_wu84c")
+metadata/_edit_use_anchors_ = true
+
+[node name="SairDialog" type="ConfirmationDialog" parent="MainMenu" unique_id=1305547263]
+
+[node name="TextureRect2" type="TextureRect" parent="MainMenu" unique_id=450550986]
+layout_mode = 0
+offset_left = -50.0
+offset_top = -2.0
+offset_right = 1222.6776
+offset_bottom = 725.0
+texture = ExtResource("2_8ln24")
+expand_mode = 1
+
+[node name="Sair" type="Button" parent="MainMenu" unique_id=2101809826]
+layout_mode = 0
+offset_left = 690.0
+offset_top = 306.0
+offset_right = 1090.0
+offset_bottom = 646.0
+icon = ExtResource("3_rtw2f")
+flat = true
+expand_icon = true
+
+[node name="Jogar" type="Button" parent="MainMenu" unique_id=392697630]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 309.0
+offset_right = 526.0
+offset_bottom = 636.0
+icon = ExtResource("4_oa1go")
+flat = true
+expand_icon = true
+
+[node name="Atestado" type="Button" parent="MainMenu" unique_id=1838518023]
+layout_mode = 0
+offset_left = 790.0
+offset_top = 22.0
+offset_right = 1111.0
+offset_bottom = 187.0
+icon = ExtResource("5_drchv")
+flat = true
+expand_icon = true
+
+[node name="AtestadoDialog" type="ConfirmationDialog" parent="MainMenu" unique_id=836645565]
+
+[connection signal="confirmed" from="MainMenu/SairDialog" to="MainMenu" method="_on_sair_dialog_confirmed"]
+[connection signal="pressed" from="MainMenu/Sair" to="MainMenu" method="_on_sair_pressed"]
+[connection signal="pressed" from="MainMenu/Jogar" to="MainMenu" method="_on_jogar_pressed"]
+[connection signal="pressed" from="MainMenu/Atestado" to="MainMenu" method="_on_atestado_pressed"]

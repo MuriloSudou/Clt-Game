@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://na6x1ufk7krw"]
+
+[ext_resource type="Script" uid="uid://dotjdf6vl67nd" path="res://industria/cafeteira.gd" id="1_687rr"]
+[ext_resource type="Texture2D" uid="uid://dacy3xgni4ug4" path="res://industria/maquina-de-fabricacao-de-cafe-em-arte-de-pixel-de-8-bits-ativos-de-jogo-de-animais-em-ilustracao-vetorial_614713-1830-removebg-preview.png" id="2_qt6l2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2f10a"]
+size = Vector2(34, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw04d"]
+size = Vector2(117.5, 102)
+
+[node name="Cafeteira" type="StaticBody2D" unique_id=1332516817]
+script = ExtResource("1_687rr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=172024027]
+scale = Vector2(0.17384778, 0.14278564)
+texture = ExtResource("2_qt6l2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1890804072]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_2f10a")
+
+[node name="AreaCafeteira" type="Area2D" parent="." unique_id=724832455]
+z_as_relative = false
+position = Vector2(0, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaCafeteira" unique_id=1534043770]
+position = Vector2(11.25, -8)
+shape = SubResource("RectangleShape2D_bw04d")
+debug_color = Color(0.9811799, 0.06840255, 0.30860677, 0.41960785)
+
+[connection signal="body_entered" from="AreaCafeteira" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="AreaCafeteira" to="." method="_on_area_2d_body_exited"]

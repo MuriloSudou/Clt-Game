@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1y8ptj5116wh"
+path="res://.godot/imported/Pick up.mp3-8fa97113b64a7ba7805d91f46657f479.mp3str"
+
+[deps]
+
+source_file="res://mercado/art/Pick up.mp3"
+dest_files=["res://.godot/imported/Pick up.mp3-8fa97113b64a7ba7805d91f46657f479.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

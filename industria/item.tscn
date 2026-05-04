@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dcfu7ge2ud186"]
+
+[ext_resource type="Texture2D" uid="uid://dpyn3pp28hqce" path="res://box-removebg-preview.png" id="1_tnite"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_otwa2"]
+size = Vector2(28, 22)
+
+[node name="Item" type="RigidBody2D" unique_id=1242525520]
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1824533700]
+position = Vector2(-1.0000033, -2.999992)
+rotation = 6.2831855
+scale = Vector2(0.11999999, 0.13714282)
+texture = ExtResource("1_tnite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=54465916]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_otwa2")

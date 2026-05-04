@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://d2l7q5cp8mwm7"]
+
+[ext_resource type="Script" uid="uid://ioipsmfav1l2" path="res://caixa.gd" id="1_tpuep"]
+[ext_resource type="Texture2D" uid="uid://dtney1b28f4ts" path="res://Caixa de papelão com etiqueta _FRÁGIL_.png" id="2_7hun5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ckkb"]
+size = Vector2(33, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hh7m"]
+size = Vector2(49.5, 45)
+
+[node name="Caixa" type="RigidBody2D" unique_id=809666292]
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 5.0
+script = ExtResource("1_tpuep")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1547096000]
+scale = Vector2(0.056396477, 0.05786132)
+texture = ExtResource("2_7hun5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1828981490]
+shape = SubResource("RectangleShape2D_5ckkb")
+
+[node name="AreaInteracao" type="Area2D" parent="." unique_id=947209605]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaInteracao" unique_id=1799999483]
+shape = SubResource("RectangleShape2D_2hh7m")

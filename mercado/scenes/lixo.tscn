@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://ckbhb26ggorfi"]
+
+[ext_resource type="Script" uid="uid://b54eqo3wj0p88" path="res://mercado/codico/lixo.gd" id="1_1bnrr"]
+[ext_resource type="Texture2D" uid="uid://ucjh1ea37glp" path="res://mercado/art/Lixo.png" id="2_4nx07"]
+[ext_resource type="AudioStream" uid="uid://1y8ptj5116wh" path="res://mercado/art/Pick up.mp3" id="3_lagc2"]
+[ext_resource type="AudioStream" uid="uid://btflrc8fujy17" path="res://mercado/art/Drop.mp3" id="4_8b5bb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwj23"]
+size = Vector2(22, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imv8s"]
+size = Vector2(20, 26)
+
+[node name="Lixo" type="Node2D" unique_id=1996241057 groups=["lixos"]]
+
+[node name="Lixo" type="Area2D" parent="." unique_id=1496903771]
+script = ExtResource("1_1bnrr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Lixo" unique_id=792327626]
+position = Vector2(-12, 9)
+scale = Vector2(0.19176519, 0.1917652)
+texture = ExtResource("2_4nx07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lixo" unique_id=240186096]
+position = Vector2(-12, 9)
+shape = SubResource("RectangleShape2D_hwj23")
+debug_color = Color(0.917898, 0.23815277, 0.41017798, 0.41960785)
+
+[node name="CorpoSolido" type="StaticBody2D" parent="Lixo" unique_id=140785339]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lixo/CorpoSolido" unique_id=1011639371]
+position = Vector2(-12, 9)
+shape = SubResource("RectangleShape2D_imv8s")
+
+[node name="SomPegar" type="AudioStreamPlayer2D" parent="Lixo" unique_id=681086162]
+stream = ExtResource("3_lagc2")
+
+[node name="SomSoltar" type="AudioStreamPlayer2D" parent="Lixo" unique_id=429260514]
+stream = ExtResource("4_8b5bb")
+
+[connection signal="body_entered" from="Lixo" to="Lixo" method="_on_body_entered"]
+[connection signal="body_exited" from="Lixo" to="Lixo" method="_on_body_exited"]

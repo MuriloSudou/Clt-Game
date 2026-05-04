@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bqm7b2fwe6v1u"]
+
+[ext_resource type="Script" uid="uid://enu2r76wb84k" path="res://codico/chart_editor.gd" id="1_itni8"]
+[ext_resource type="AudioStream" uid="uid://c6q87i156w0w3" path="res://art/Pico - Friday Night Funkin' OST - Kawai Sprite (youtube).mp3" id="2_y76h5"]
+
+[node name="Node2D" type="Node2D" unique_id=1655725069]
+script = ExtResource("1_itni8")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=2038117202]
+stream = ExtResource("2_y76h5")
+
+[node name="Label" type="Label" parent="." unique_id=479050560]
+offset_right = 40.0
+offset_bottom = 23.0

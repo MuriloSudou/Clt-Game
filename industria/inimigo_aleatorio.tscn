@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cdjt2bb8o2t0u"]
+
+[ext_resource type="Script" uid="uid://bvji57p2ufvtv" path="res://inimigo_aleatorio.gd" id="1_t1v6c"]
+[ext_resource type="Texture2D" uid="uid://bcwypvkqedt6y" path="res://office-printer-removebg-preview.png" id="2_x5e4m"]
+[ext_resource type="AudioStream" uid="uid://d06fu855pu2hp" path="res://freesound_community-075681_electric-shock-33018.mp3" id="3_x5e4m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ge3g"]
+size = Vector2(20, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqibl"]
+size = Vector2(26, 39)
+
+[node name="InimigoAleatorio" type="CharacterBody2D" unique_id=204652844]
+script = ExtResource("1_t1v6c")
+velocidade = 400.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1505747411]
+shape = SubResource("RectangleShape2D_5ge3g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1521926522]
+position = Vector2(-1.9073486e-06, -3.8146973e-06)
+scale = Vector2(0.082625, 0.098)
+texture = ExtResource("2_x5e4m")
+
+[node name="TimerDirecao" type="Timer" parent="." unique_id=1923029140]
+wait_time = 2.046
+autostart = true
+
+[node name="SensorJogador" type="Area2D" parent="." unique_id=1281719971]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SensorJogador" unique_id=1506907953]
+shape = SubResource("RectangleShape2D_qqibl")
+debug_color = Color(0.913437, 0.24343511, 0.422512, 0.41960785)
+
+[node name="SomChoque" type="AudioStreamPlayer2D" parent="." unique_id=1007057997]
+stream = ExtResource("3_x5e4m")
+volume_db = -10.496
+
+[connection signal="timeout" from="TimerDirecao" to="." method="_on_timer_direcao_timeout"]
+[connection signal="body_entered" from="SensorJogador" to="." method="_on_sensor_jogador_body_entered"]

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://o635a8dp0sq"]
+
+[ext_resource type="Script" uid="uid://2nahkoif3544" path="res://mercado/codico/empilhadeira.gd" id="1_wks61"]
+[ext_resource type="Texture2D" uid="uid://cmew5ecd0ji38" path="res://industria/character-spritesheet.png" id="2_jxwh6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bsc27"]
+load_path = "res://.godot/imported/empilhadeira (2).png-8a8687a677421dd5a741911354e299a2.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxwh6"]
+atlas = ExtResource("2_jxwh6")
+region = Rect2(138, 2112, 69, 66)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_65rcx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxwh6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wks61"]
+size = Vector2(39.938663, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_en6nl"]
+size = Vector2(60, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebi83"]
+size = Vector2(11.083349, 7.593836)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wks61"]
+radius = 9.012832
+
+[node name="Empilhadeira" type="CharacterBody2D" unique_id=1702251913]
+position = Vector2(6, 10)
+script = ExtResource("1_wks61")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=417832679]
+position = Vector2(2.9999943, 5.4999905)
+scale = Vector2(0.17142823, 0.20018241)
+texture = SubResource("CompressedTexture2D_bsc27")
+region_enabled = true
+region_rect = Rect2(353, 353.5, 350, 332)
+
+[node name="motorista" type="AnimatedSprite2D" parent="." unique_id=936673284]
+position = Vector2(0, -4)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_65rcx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1153130796]
+position = Vector2(1.0647545, 4.5)
+scale = Vector2(1.0984467, 1)
+shape = SubResource("RectangleShape2D_wks61")
+
+[node name="ColisaoPalletCarregado" type="CollisionShape2D" parent="." unique_id=7134195]
+position = Vector2(53, 7)
+shape = SubResource("RectangleShape2D_en6nl")
+disabled = true
+
+[node name="PontoGarfo" type="Marker2D" parent="." unique_id=1342478451]
+position = Vector2(33, -9.000001)
+scale = Vector2(0.8063372, -0.82374495)
+
+[node name="SensorGarfo" type="Area2D" parent="." unique_id=923573914]
+position = Vector2(33, 29.000002)
+scale = Vector2(3.3648345, 2.5224175)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SensorGarfo" unique_id=2099652920]
+position = Vector2(3.1578836, -0.91809845)
+scale = Vector2(1.2535243, 0.5934982)
+shape = SubResource("RectangleShape2D_ebi83")
+
+[node name="AreaEntrada" type="Area2D" parent="." unique_id=1963293216]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaEntrada" unique_id=626971139]
+position = Vector2(-29, 7)
+scale = Vector2(1, 2.08)
+shape = SubResource("CircleShape2D_wks61")

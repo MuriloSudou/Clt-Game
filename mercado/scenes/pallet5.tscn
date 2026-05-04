@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://8vlx3wk042sr"]
+
+[ext_resource type="Texture2D" uid="uid://cedjc41m45jgt" path="res://mercado/art/pallets.png" id="1_sn2wp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svtij"]
+size = Vector2(57.5, 48)
+
+[node name="Pallet" type="Area2D" unique_id=780232090 groups=["pallets"]]
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1986401131]
+position = Vector2(28, 23.00003)
+scale = Vector2(0.35798818, 0.35034013)
+texture = ExtResource("1_sn2wp")
+region_enabled = true
+region_rect = Rect2(410, 44.5, 167, 132)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=482869866]
+position = Vector2(27.25, 23)
+shape = SubResource("RectangleShape2D_svtij")

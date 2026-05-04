@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://j2vhvcaaitiv"]
+
+[ext_resource type="Script" uid="uid://b08keinjt46bu" path="res://newminigame/codico/main.gd" id="1_0xj0w"]
+[ext_resource type="PackedScene" uid="uid://dbo5hisy8nlew" path="res://newminigame/scenes/SnakeGame.tscn" id="2_igp2k"]
+[ext_resource type="Texture2D" uid="uid://f5f2ew3ipr7d" path="res://newminigame/art/MONITOR.png" id="2_v2vrq"]
+[ext_resource type="Texture2D" uid="uid://ckct0wsbclqhr" path="res://newminigame/art/boss_warning.png.png" id="4_jk63g"]
+[ext_resource type="Texture2D" uid="uid://wqlvxgnby76l" path="res://newminigame/art/EXCEL.png" id="4_trj3p"]
+[ext_resource type="Texture2D" uid="uid://cghfahknqk6cm" path="res://newminigame/art/boss_gameover.png" id="5_tmg4e"]
+[ext_resource type="Script" uid="uid://bgrpjjy4md76g" path="res://newminigame/codico/restart_handler.gd" id="7_jkpo8"]
+
+[node name="Main" type="Node2D" unique_id=219602615]
+script = ExtResource("1_0xj0w")
+
+[node name="Monitor" type="Node2D" parent="." unique_id=321727092]
+
+[node name="Frame" type="Sprite2D" parent="Monitor" unique_id=188168679]
+position = Vector2(579.00006, 319.49997)
+scale = Vector2(0.83463526, 0.83463544)
+texture = ExtResource("2_v2vrq")
+
+[node name="Screen" type="Control" parent="Monitor" unique_id=1491798555]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 252.0
+offset_top = 53.0
+offset_right = 906.0
+offset_bottom = 440.0
+metadata/_edit_use_anchors_ = true
+
+[node name="SnakeGame" parent="Monitor/Screen" unique_id=121407006 instance=ExtResource("2_igp2k")]
+position = Vector2(0, -1)
+
+[node name="BossWarning" type="TextureRect" parent="." unique_id=546235578]
+visible = false
+offset_top = 32.0
+offset_right = 677.0
+offset_bottom = 421.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_jk63g")
+stretch_mode = 5
+
+[node name="BossGameOver" type="TextureRect" parent="." unique_id=48172044]
+visible = false
+offset_left = -134.0
+offset_top = -69.0
+offset_right = 543.0
+offset_bottom = 300.0
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("5_tmg4e")
+
+[node name="TimerBoss" type="Timer" parent="." unique_id=534462593]
+one_shot = true
+
+[node name="FakeExcel" type="Sprite2D" parent="." unique_id=1172184299]
+visible = false
+position = Vector2(578.3125, 244)
+scale = Vector2(0.3419922, 0.3611111)
+texture = ExtResource("4_trj3p")
+
+[node name="RestartHandler" type="Node" parent="." unique_id=1622970492]
+process_mode = 2
+script = ExtResource("7_jkpo8")
+
+[connection signal="timeout" from="TimerBoss" to="." method="_on_timer_boss_timeout"]

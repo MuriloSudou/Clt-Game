@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://hs1nwnlbyn4f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svtij"]
+size = Vector2(61.5, 48)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_irpev"]
+load_path = "res://.godot/imported/pallets.png-a5a8db09537b1886d482d2f5e01bfea5.ctex"
+
+[node name="Pallet" type="CharacterBody2D" unique_id=243447949 groups=["pallets"]]
+scale = Vector2(1.411674, 1.5381674)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=482869866 groups=["pallets"]]
+position = Vector2(29.25, 23)
+shape = SubResource("RectangleShape2D_svtij")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1986401131]
+position = Vector2(29, 22.000002)
+scale = Vector2(0.35798818, 0.35034013)
+texture = SubResource("CompressedTexture2D_irpev")
+region_enabled = true
+region_rect = Rect2(221.20001, 209.59999, 163.99997, 143.99998)

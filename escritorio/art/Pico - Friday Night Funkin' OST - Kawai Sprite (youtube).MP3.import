@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1v645hnu2kkw"
+path="res://.godot/imported/Pico - Friday Night Funkin' OST - Kawai Sprite (youtube).MP3-b75cd128f38c028177d6d29c13c706eb.mp3str"
+
+[deps]
+
+source_file="res://escritorio/art/Pico - Friday Night Funkin' OST - Kawai Sprite (youtube).MP3"
+dest_files=["res://.godot/imported/Pico - Friday Night Funkin' OST - Kawai Sprite (youtube).MP3-b75cd128f38c028177d6d29c13c706eb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

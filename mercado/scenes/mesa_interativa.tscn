@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cy5h0ntj2b146"]
+
+[ext_resource type="Script" uid="uid://dph3oi4fegk3r" path="res://mercado/codico/mesa_interativa.gd" id="1_d4hdi"]
+[ext_resource type="Texture2D" uid="uid://dvb4whkm1b6ko" path="res://mercado/art/Arrow Down.png" id="2_n5wna"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5wna"]
+size = Vector2(155, 82)
+
+[node name="MesaInterativa" type="Node2D" unique_id=1875338669]
+
+[node name="MesaInterativa" type="Area2D" parent="." unique_id=606691824]
+script = ExtResource("1_d4hdi")
+cena_destino = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MesaInterativa" unique_id=1523214908]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_n5wna")
+
+[node name="Label" type="Label" parent="MesaInterativa" unique_id=1990320317]
+visible = false
+offset_left = -44.0
+offset_top = -15.0
+offset_right = 55.0
+offset_bottom = 8.0
+text = "[ E ] Interagir"
+
+[node name="Seta" type="Sprite2D" parent="MesaInterativa" unique_id=1540489622]
+position = Vector2(-2, -47)
+scale = Vector2(0.1279632, 0.18682627)
+texture = ExtResource("2_n5wna")
+
+[connection signal="body_entered" from="MesaInterativa" to="MesaInterativa" method="_on_body_entered"]
+[connection signal="body_exited" from="MesaInterativa" to="MesaInterativa" method="_on_body_exited"]

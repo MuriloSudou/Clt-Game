@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cy0kdj5rhdt06"
+path="res://.godot/imported/Open Trash song.wav-48794798023e0ccfe7c98311e0f4a5c6.sample"
+
+[deps]
+
+source_file="res://mercado/art/Open Trash song.wav"
+dest_files=["res://.godot/imported/Open Trash song.wav-48794798023e0ccfe7c98311e0f4a5c6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

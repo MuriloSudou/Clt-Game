@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://vkdrwu7be00m"]
+
+[ext_resource type="Script" uid="uid://bivghlcxov8nf" path="res://industria/maquina_defeituosa.gd" id="1_lnbfr"]
+[ext_resource type="Texture2D" uid="uid://banjpjr4cvxup" path="res://industria/ChatGPT Image 26 de abr. de 2026, 22_55_37.png" id="1_u2vn0"]
+[ext_resource type="Texture2D" uid="uid://bu34kfh65njl3" path="res://industria/pixel-art-yellow-warning-sign-with-exclamation-mark-icon-png-removebg-preview.png" id="3_8n17w"]
+[ext_resource type="AudioStream" uid="uid://dxxao4vkdwyok" path="res://industria/som maquina.mp3" id="4_8n17w"]
+[ext_resource type="AudioStream" uid="uid://dfs5b2x3g5gmk" path="res://industria/maquinaqbrando.mp3" id="5_dhw21"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7okkc"]
+size = Vector2(221, 118.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhw21"]
+size = Vector2(328, 187)
+
+[node name="MaquinaDefeituosa" type="StaticBody2D" unique_id=1941281303]
+script = ExtResource("1_lnbfr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1582398217]
+position = Vector2(0, 9.536743e-07)
+scale = Vector2(0.32702637, 0.24304198)
+texture = ExtResource("1_u2vn0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=827127080]
+position = Vector2(-11.5, 15.375)
+shape = SubResource("RectangleShape2D_7okkc")
+
+[node name="ZonaDeConserto" type="Area2D" parent="." unique_id=1935022225]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaDeConserto" unique_id=2006657745]
+position = Vector2(1, 32.5)
+shape = SubResource("RectangleShape2D_dhw21")
+debug_color = Color(0.9166715, 0.25319475, 0.35876617, 0.41960785)
+
+[node name="TimerQuebra" type="Timer" parent="." unique_id=541375737]
+
+[node name="TimerGameOver" type="Timer" parent="." unique_id=1843303697]
+one_shot = true
+
+[node name="IconeAlerta" type="Sprite2D" parent="." unique_id=1333267287]
+visible = false
+position = Vector2(0, -79)
+scale = Vector2(0.276, 0.252)
+texture = ExtResource("3_8n17w")
+
+[node name="SomTrabalhando" type="AudioStreamPlayer2D" parent="." unique_id=1385535520]
+stream = ExtResource("4_8n17w")
+volume_db = 9.334
+pitch_scale = 2.09
+autoplay = true
+panning_strength = 1.2
+parameters/looping = true
+
+[node name="SomQuebrando" type="AudioStreamPlayer2D" parent="." unique_id=584194402]
+stream = ExtResource("5_dhw21")
+
+[connection signal="body_entered" from="ZonaDeConserto" to="." method="_on_zona_de_conserto_body_entered"]
+[connection signal="body_exited" from="ZonaDeConserto" to="." method="_on_zona_de_conserto_body_exited"]
+[connection signal="timeout" from="TimerQuebra" to="." method="_on_timer_quebra_timeout"]
+[connection signal="timeout" from="TimerGameOver" to="." method="_on_timer_game_over_timeout"]
