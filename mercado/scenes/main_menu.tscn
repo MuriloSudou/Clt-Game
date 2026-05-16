@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://b0cf5mrll4ew1" path="res://mercado/art/pedirContaButton.webp" id="3_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://bogd5svuhpmf8" path="res://mercado/art/jogarButtton.png" id="4_oa1go"]
 [ext_resource type="Texture2D" uid="uid://dfdo5l5aawfku" path="res://mercado/art/Atestado Button.png" id="5_drchv"]
+[ext_resource type="AudioStream" uid="uid://crfekdofqnirn" path="res://mercado/art/SomClick.wav" id="6_6irkm"]
+[ext_resource type="AudioStream" uid="uid://btqobsa63a2gs" path="res://mercado/art/SomHover.wav" id="7_03443"]
 
 [node name="Node2D" type="Node2D" unique_id=1470758799]
 
@@ -58,6 +60,12 @@ flat = true
 expand_icon = true
 
 [node name="AtestadoDialog" type="ConfirmationDialog" parent="MainMenu" unique_id=836645565]
+
+[node name="SomClique" type="AudioStreamPlayer2D" parent="MainMenu" unique_id=332849959]
+stream = ExtResource("6_6irkm")
+
+[node name="SomHover" type="AudioStreamPlayer2D" parent="MainMenu" unique_id=2105261316]
+stream = ExtResource("7_03443")
 
 [connection signal="confirmed" from="MainMenu/SairDialog" to="MainMenu" method="_on_sair_dialog_confirmed"]
 [connection signal="pressed" from="MainMenu/Sair" to="MainMenu" method="_on_sair_pressed"]

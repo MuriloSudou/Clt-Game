@@ -6,6 +6,10 @@ var missao_concluida = false
 @onready var label_contador = get_tree().current_scene.find_child("TextoVitoria", true, false)
 @onready var label_centro = get_tree().current_scene.find_child("TextoIntro", true, false)
 
+# --- NOVOS NÓS DE ÁUDIO ---
+@onready var som_entrega = $SomEntrega
+@onready var som_vitoria = $SomVitoria
+
 func _ready():
 	body_entered.connect(_ao_entrar_na_zona)
 	body_exited.connect(_ao_sair_na_zona)
@@ -16,6 +20,10 @@ func _ready():
 func _ao_entrar_na_zona(body):
 	if body.is_in_group("pallets"):
 		total_pallets += 1
+		
+		# NOVO: Toca o som toda vez que um pallet entra na área
+		som_entrega.play()
+		
 		atualizar_tela()
 
 func _ao_sair_na_zona(body):
@@ -42,6 +50,9 @@ func atualizar_tela():
 				mostrar_vitoria_no_centro()
 
 func mostrar_vitoria_no_centro():
+	# NOVO: Toca o som de missão cumprida
+	som_vitoria.play()
+
 	# 1. PARA O CRONÔMETRO
 	var timer_node = get_tree().current_scene.find_child("TextoTimer", true, false)
 	if timer_node:
@@ -73,3 +84,23 @@ func mostrar_vitoria_no_centro():
 		label_centro.visible = false
 		if timer_node:
 			timer_node.visible = false
+			
+	# Faz a mágica do texto aparecer no meio da tela
+	if label_centro:
+		label_centro.text = "MISSÃO CUMPRIDA!\nAGORA HORA DE ORGANIZAR O SUPERMERCADO!"
+		label_centro.add_theme_color_override("font_color", Color("FFD700")) # Amarelo Ouro
+		label_centro.visible = true
+		
+		# Animação de Fade In
+		var tween_aparecer2 = create_tween()
+		tween_aparecer2.tween_property(label_centro, "modulate:a", 1.0, 0.5)
+		
+		# Deixa na tela por 4 segundos
+		await get_tree().create_timer(4.0).timeout
+		
+		# Animação de Fade Out
+		var tween_sumir2 = create_tween()
+		tween_sumir2.tween_property(label_centro, "modulate:a", 0.0, 1.5)
+		await tween_sumir2.finished
+		
+		label_centro.visible = false

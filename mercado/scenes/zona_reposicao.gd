@@ -2,7 +2,10 @@ extends Area2D
 
 @onready var label_aviso = $Label
 @onready var barra_progresso = $ProgressBar
-@onready var seta = $Seta # <--- Pega a nossa nova seta
+@onready var seta = $Seta # Pega a nossa nova seta
+
+# NOVO: Referência para o som de tarefa concluída
+@onready var som_concluido = $SomConcluido
 
 var jogador_perto = false
 var progresso = 0.0
@@ -65,7 +68,9 @@ func concluir_reposicao():
 	if seta:
 		seta.visible = false
 	
-	# --- A MÁGICA ESTÁ AQUI ---
+	# NOVO: Toca o som de sucesso imediatamente
+	som_concluido.play()
+	
 	# get_tree().current_scene pega a raiz do mapa atual com 100% de certeza
 	get_tree().current_scene.registrar_reposicao()
 	

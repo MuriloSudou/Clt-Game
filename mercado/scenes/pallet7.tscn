@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://duoui1o5f8uhd"]
 
+[ext_resource type="Texture2D" uid="uid://cedjc41m45jgt" path="res://mercado/art/pallets.png" id="1_k2kvx"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_svtij"]
 size = Vector2(61.5, 48)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_irpev"]
-load_path = "res://.godot/imported/pallets.png-a5a8db09537b1886d482d2f5e01bfea5.ctex"
 
 [node name="Pallet" type="CharacterBody2D" unique_id=243447949 groups=["pallets"]]
 collision_mask = 3
@@ -16,6 +15,6 @@ shape = SubResource("RectangleShape2D_svtij")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1986401131]
 position = Vector2(28, 23.00003)
 scale = Vector2(0.35798818, 0.35034013)
-texture = SubResource("CompressedTexture2D_irpev")
+texture = ExtResource("1_k2kvx")
 region_enabled = true
 region_rect = Rect2(412.4, 49.600002, 163.19998, 127.19998)

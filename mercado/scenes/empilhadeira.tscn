@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://2nahkoif3544" path="res://mercado/codico/empilhadeira.gd" id="1_wks61"]
 [ext_resource type="Texture2D" uid="uid://cmew5ecd0ji38" path="res://industria/character-spritesheet.png" id="2_jxwh6"]
+[ext_resource type="AudioStream" uid="uid://31h2oinlcvq" path="res://mercado/art/EmpilhadeiraSom.wav" id="3_mih83"]
+[ext_resource type="AudioStream" uid="uid://4k8biwyy4sn8" path="res://mercado/art/EmpilhadeiraLigar.wav" id="4_kv5f8"]
+[ext_resource type="AudioStream" uid="uid://jr1mbd7fa548" path="res://mercado/art/EmpilhadeiraPegar.wav" id="5_oahmv"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bsc27"]
 load_path = "res://.godot/imported/empilhadeira (2).png-8a8687a677421dd5a741911354e299a2.ctex"
@@ -78,3 +81,15 @@ shape = SubResource("RectangleShape2D_ebi83")
 position = Vector2(-29, 7)
 scale = Vector2(1, 2.08)
 shape = SubResource("CircleShape2D_wks61")
+
+[node name="SomMotor" type="AudioStreamPlayer2D" parent="." unique_id=1242657360]
+stream = ExtResource("3_mih83")
+volume_db = 12.03
+
+[node name="SomEntrar" type="AudioStreamPlayer2D" parent="." unique_id=1766589022]
+stream = ExtResource("4_kv5f8")
+volume_db = 13.0
+
+[node name="SomPegarPallet" type="AudioStreamPlayer2D" parent="." unique_id=1944908338]
+stream = ExtResource("5_oahmv")
+volume_db = 13.0

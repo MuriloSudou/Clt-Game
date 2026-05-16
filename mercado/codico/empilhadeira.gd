@@ -9,9 +9,17 @@ var motorista_atual = null
 
 @onready var sprite_motorista_cabine = $motorista
 
+# --- NÓS DE ÁUDIO ---
+@onready var som_motor = $SomMotor
+@onready var som_entrar = $SomEntrar          
+@onready var som_pegar_pallet = $SomPegarPallet  
+
 func _ready():
 	$AreaEntrada.body_entered.connect(_ao_entrar_na_area)
 	$AreaEntrada.body_exited.connect(_ao_sair_na_area)
+	
+	# Mantém apenas o loop do motor ativo por segurança
+	som_motor.finished.connect(_ao_som_motor_terminar)
 
 	sprite_motorista_cabine.visible = false
 	sprite_motorista_cabine.z_index = 1
@@ -21,13 +29,17 @@ func _ready():
 
 	print("Empilhadeira pronta.")
 
+# Função que mantém o motor rodando em loop enquanto estiver dirigindo
+func _ao_som_motor_terminar():
+	if esta_dirigindo:
+		som_motor.play()
+
 func _physics_process(_delta):
 	if esta_dirigindo:
 		var direcao = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		velocity = direcao * velocidade
 		move_and_slide()
 
-		# Faz o boneco invisível acompanhar (câmera)
 		if is_instance_valid(motorista_atual):
 			motorista_atual.global_position = global_position
 
@@ -49,11 +61,9 @@ func entrar_na_empilhadeira():
 	esta_dirigindo = true
 	motorista_atual = jogador_na_area
 
-	# Esconde jogador real
 	motorista_atual.visible = false
 	motorista_atual.set_physics_process(false)
 
-	# Mostra motorista na cabine
 	sprite_motorista_cabine.visible = true
 
 	for child in motorista_atual.get_children():
@@ -62,14 +72,26 @@ func entrar_na_empilhadeira():
 
 	print("Motorista entrou!")
 
+	# 1. Toca o som de entrar primeiro
+	som_entrar.play()
+
+	# 2. O código ESPERA o som de entrar terminar completamente aqui
+	await som_entrar.finished
+
+	# 3. Só liga o motor se o jogador ainda estiver dentro da empilhadeira
+	if esta_dirigindo:
+		som_motor.play()
+
 func sair_da_empilhadeira():
 	if is_instance_valid(motorista_atual):
 		esta_dirigindo = false
 
-		# Esconde cabine
 		sprite_motorista_cabine.visible = false
 
-		# Volta jogador real
+		# Para todos os sons imediatamente ao sair
+		som_motor.stop()
+		som_entrar.stop() 
+
 		motorista_atual.visible = true
 		motorista_atual.set_physics_process(true)
 
@@ -77,7 +99,6 @@ func sair_da_empilhadeira():
 			if child is CollisionShape2D or child is CollisionPolygon2D:
 				child.set_deferred("disabled", false)
 
-		# Sai do lado da empilhadeira
 		motorista_atual.global_position = global_position + Vector2(120, 0)
 
 		print("Motorista saiu!")
@@ -106,6 +127,8 @@ func tentar_pegar():
 			pallet_nas_maos.position = Vector2.ZERO
 			pallet_nas_maos.rotation = 0
 			$ColisaoPalletCarregado.set_deferred("disabled", false)
+
+			som_pegar_pallet.play()
 
 			print("Pegou o pallet!")
 			return

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bm4y8kxgk8mpr" path="res://mercado/scenes/zona_reposicao.gd" id="1_18mvp"]
 [ext_resource type="Texture2D" uid="uid://dvb4whkm1b6ko" path="res://mercado/art/Arrow Down.png" id="2_mudv1"]
+[ext_resource type="AudioStream" uid="uid://cypfswn5v3ouh" path="res://mercado/art/Complet.wav" id="3_qc3qh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sv08q"]
 size = Vector2(70, 95.75)
@@ -42,6 +43,9 @@ show_percentage = false
 position = Vector2(3, -56)
 scale = Vector2(0.1279632, 0.18682627)
 texture = ExtResource("2_mudv1")
+
+[node name="SomConcluido" type="AudioStreamPlayer2D" parent="ZonaReposicao" unique_id=2059614943]
+stream = ExtResource("3_qc3qh")
 
 [connection signal="body_entered" from="ZonaReposicao" to="ZonaReposicao" method="_on_body_entered"]
 [connection signal="body_exited" from="ZonaReposicao" to="ZonaReposicao" method="_on_body_exited"]

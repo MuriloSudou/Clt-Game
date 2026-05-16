@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://24hyq4vlxuda" path="res://mercado/art/lixeira.png" id="1_2wx2b"]
 [ext_resource type="Script" uid="uid://ddknpjni15oy6" path="res://mercado/codico/lixeira.gd" id="1_agult"]
 [ext_resource type="AudioStream" uid="uid://cy0kdj5rhdt06" path="res://mercado/art/Open Trash song.wav" id="3_v02cv"]
+[ext_resource type="AudioStream" uid="uid://cypfswn5v3ouh" path="res://mercado/art/Complet.wav" id="4_6rjyj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_agult"]
 size = Vector2(33, 46)
@@ -32,6 +33,9 @@ debug_color = Color(0.9483916, 0.19344717, 0.31983805, 0.41960785)
 
 [node name="SomDepositar" type="AudioStreamPlayer" parent="Lixeira" unique_id=1786103612]
 stream = ExtResource("3_v02cv")
+
+[node name="SomComplet" type="AudioStreamPlayer" parent="Lixeira" unique_id=1969815669]
+stream = ExtResource("4_6rjyj")
 
 [connection signal="body_entered" from="Lixeira" to="Lixeira" method="_on_body_entered"]
 [connection signal="body_exited" from="Lixeira" to="Lixeira" method="_on_body_exited"]

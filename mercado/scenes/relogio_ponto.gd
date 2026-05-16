@@ -3,6 +3,9 @@ extends Area2D
 var jogador_perto = false
 var turno_iniciado = false
 
+# NOVO: Referência para o som do relógio de ponto
+@onready var som_ponto = $SomPonto
+
 # Puxa aquele texto bonitão do meio da tela que criamos
 @onready var label_centro = get_tree().current_scene.find_child("TextoIntro", true, false)
 
@@ -29,13 +32,14 @@ func _input(event):
 func bater_o_ponto():
 	turno_iniciado = true
 	
-	# --- NOVO: FAZ O INDICADOR SUMIR ---
+	# NOVO: Toca o som do ponto imediatamente
+	som_ponto.play()
+	
+	# --- FAZ O INDICADOR SUMIR ---
 	if has_node("Indicador"):
 		get_node("Indicador").visible = false
 	# ----------------------------------
 
-	
-	
 	# Procura o timer no HUD e ativa
 	var timer_node = get_tree().current_scene.find_child("TextoTimer", true, false)
 	if timer_node:

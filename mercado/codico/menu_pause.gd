@@ -5,6 +5,10 @@ extends CanvasLayer
 @onready var btn_vmenu = $Fundo/Vmenu
 @onready var btn_rlevel = $Fundo/Rlevel
 
+# --- NÓS DE ÁUDIO ---
+@onready var som_hover = $SomHover
+@onready var som_clique = $SomClique
+
 func _ready():
 	# O menu começa invisível
 	visible = false
@@ -16,7 +20,6 @@ func _ready():
 
 func configurar_animacao_botao(botao: Button):
 	# 1. O SEGREDO: Muda o ponto de ancoragem para o CENTRO do botão.
-	# Se não fizermos isso, o botão cresce torto (puxando para a direita e para baixo).
 	botao.pivot_offset = botao.size / 2
 	
 	# 2. Conecta o sinal de "mouse entrou" e "mouse saiu" direto por código
@@ -26,14 +29,14 @@ func configurar_animacao_botao(botao: Button):
 # --- ANIMAÇÕES (TWEENS) ---
 
 func animar_crescer(botao: Button):
-	# Cria o animador
 	var tween = create_tween()
-	# Anima a propriedade "scale" para 1.1 (10% maior) em 0.1 segundos
 	tween.tween_property(botao, "scale", Vector2(1.1, 1.1), 0.1)
+	
+	# Toca o som de hover ao passar o mouse
+	som_hover.play()
 
 func animar_diminuir(botao: Button):
 	var tween = create_tween()
-	# Anima a propriedade "scale" de volta para 1.0 (tamanho original)
 	tween.tween_property(botao, "scale", Vector2(1.0, 1.0), 0.1)
 
 
@@ -51,13 +54,17 @@ func alternar_pause():
 # --- FUNÇÕES DE CLIQUE DOS BOTÕES ---
 
 func _on_retornar_pressed():
+	som_clique.play() # Toca o clique (não precisa de await porque a cena não vai sumir)
 	alternar_pause()
 
 func _on_rlevel_pressed():
+	som_clique.play()
+	await som_clique.finished # Espera o som terminar antes de reiniciar a fase
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func _on_vmenu_pressed():
+	som_clique.play()
+	await som_clique.finished # Espera o som terminar antes de ir para o menu
 	get_tree().paused = false
-	# IMPORTANTE: Confirme se o nome da cena do seu menu principal é este mesmo
 	get_tree().change_scene_to_file("res://mercado/scenes/main_menu.tscn")

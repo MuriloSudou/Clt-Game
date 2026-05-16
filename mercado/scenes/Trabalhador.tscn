@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ut0isbdas5e5" path="res://mercado/scenes/copinho.tscn" id="8_1lnwp"]
 [ext_resource type="Texture2D" uid="uid://cvnfxw0yjanld" path="res://mercado/art/todd.png" id="8_wwsav"]
 [ext_resource type="PackedScene" uid="uid://o635a8dp0sq" path="res://mercado/scenes/empilhadeira.tscn" id="11_ltvjc"]
+[ext_resource type="AudioStream" uid="uid://m8e43xw4knc" path="res://mercado/art/Ponto.wav" id="12_dnh3j"]
 [ext_resource type="PackedScene" uid="uid://hs1nwnlbyn4f" path="res://mercado/scenes/pallet2.tscn" id="13_smhuw"]
 [ext_resource type="Script" uid="uid://cwkcq5r8ljepg" path="res://mercado/codico/zona_entrega.gd" id="14_t0iwl"]
 [ext_resource type="PackedScene" uid="uid://bdgny27x1x45g" path="res://mercado/scenes/pallet3.tscn" id="15_okf22"]
@@ -28,12 +29,15 @@
 [ext_resource type="Script" uid="uid://br82wa1ve0jyg" path="res://mercado/scenes/relogio_ponto.gd" id="22_j33m6"]
 [ext_resource type="Texture2D" uid="uid://ckljmrxviwuge" path="res://mercado/art/Relógio_digital_no_estilo_retrô__1_-removebg-preview.png" id="23_alfja"]
 [ext_resource type="PackedScene" uid="uid://c5od7l00ghd1t" path="res://mercado/scenes/zona_reposicao.tscn" id="24_8xrjd"]
+[ext_resource type="AudioStream" uid="uid://cypfswn5v3ouh" path="res://mercado/art/Complet.wav" id="24_mlbvc"]
 [ext_resource type="AudioStream" uid="uid://ymjtqkj2jso5" path="res://mercado/art/liecio-bonus-points-190035.mp3" id="25_1db6i"]
 [ext_resource type="PackedScene" uid="uid://bp55rmql2mmgs" path="res://mercado/scenes/cliente.tscn" id="27_7hukj"]
 [ext_resource type="PackedScene" uid="uid://cpecp2x6pvp3c" path="res://mercado/scenes/cliente_2.tscn" id="27_xaxxy"]
 [ext_resource type="PackedScene" uid="uid://ddswep7lqc43k" path="res://mercado/scenes/cliente_3.tscn" id="28_xaxxy"]
 [ext_resource type="PackedScene" uid="uid://bi3dt4wxotfto" path="res://mercado/scenes/cliente4.tscn" id="32_0aat8"]
-[ext_resource type="PackedScene" uid="uid://cir64bu4r6f25" path="res://mercado/scenes/menu.tscn" id="34_dnh3j"]
+[ext_resource type="Script" uid="uid://k44siypsbddb" path="res://mercado/scenes/area_estoque.gd" id="36_mlbvc"]
+[ext_resource type="AudioStream" uid="uid://djyuwfrts5rh2" path="res://mercado/art/Estoque.wav" id="37_xkggj"]
+[ext_resource type="PackedScene" uid="uid://cir64bu4r6f25" path="res://mercado/scenes/menu.tscn" id="38_qjlwk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aq7c4"]
 texture = ExtResource("1_aq7c4")
@@ -43871,6 +43875,9 @@ size = Vector2(208.25, 286.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ld4qd"]
 size = Vector2(79, 26)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkggj"]
+size = Vector2(1160, 802)
+
 [node name="Node2D" type="Node2D" unique_id=353669004]
 position = Vector2(14, 0)
 script = ExtResource("1_1db6i")
@@ -43928,6 +43935,10 @@ theme_override_fonts/font = ExtResource("16_7i7wm")
 text = "BATA O PONTO
  AQUI [E]"
 
+[node name="SomPonto" type="AudioStreamPlayer2D" parent="RelogioPonto" unique_id=602927943]
+stream = ExtResource("12_dnh3j")
+volume_db = 8.149
+
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="." unique_id=994979375]
 position = Vector2(192, 739)
 script = ExtResource("2_5wb8o")
@@ -43951,13 +43962,13 @@ limit_bottom = 790
 [node name="ColisoesMapa" type="StaticBody2D" parent="." unique_id=451744639]
 
 [node name="Bordas" type="CollisionPolygon2D" parent="ColisoesMapa" unique_id=1722294390]
-position = Vector2(-5, 4)
+position = Vector2(-15, 4)
 build_mode = 1
 polygon = PackedVector2Array(-7, 31, -8, 785, 853, 783, 1879, 785, 2672, 790, 2682, 15, 1523, 34)
 
 [node name="Paredes" type="CollisionPolygon2D" parent="ColisoesMapa" unique_id=285618420]
 build_mode = 1
-polygon = PackedVector2Array(532, 38, 524, 38, -4, 46, -1, 255, 136, 253, 135, 143, 519, 143, 521, 213, 532, 218, 521, 214, 293, 216, 298, 432, 7, 438, 3, 565, 310, 561, 307, 389, 696, 389, 695, 437, 717, 432, 717, 447, 736, 447, 748, 430, 762, 430, 763, 459, 1080, 465, 1077, 432, 1146, 430, 1146, 463, 1190, 459, 1195, 432, 1283, 430, 1283, 456, 1324, 459, 1322, 425, 1355, 429, 1357, 350, 710, 348, 713, 281, 304, 285, 310, 250, 532, 250)
+polygon = PackedVector2Array(532, 38, 524, 38, -4, 46, -1, 255, 136, 253, 135, 143, 519, 143, 521, 213, 532, 218, 521, 214, 293, 216, 298, 432, 7, 438, 3, 565, 310, 561, 307, 389, 696, 389, 695, 437, 717, 432, 717, 447, 736, 447, 748, 430, 762, 430, 770, 445, 1079, 444, 1077, 432, 1146, 430, 1146, 448, 1192, 449, 1195, 432, 1283, 430, 1286, 445, 1319, 443, 1322, 425, 1355, 429, 1357, 350, 710, 348, 713, 281, 304, 285, 310, 250, 532, 250)
 
 [node name="Paredes2" type="CollisionPolygon2D" parent="ColisoesMapa" unique_id=743632648]
 build_mode = 1
@@ -44111,6 +44122,11 @@ offset_right = 2478.0002
 offset_bottom = 318.0
 scale = Vector2(5.04, 6.5600014)
 color = Color(0, 0.5019608, 0, 0.20392157)
+
+[node name="SomEntrega" type="AudioStreamPlayer" parent="ZonaEntrega" unique_id=1950608616]
+stream = ExtResource("24_mlbvc")
+
+[node name="SomVitoria" type="AudioStreamPlayer" parent="ZonaEntrega" unique_id=534371748]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=979095497]
 
@@ -44299,6 +44315,31 @@ position = Vector2(958, 226)
 [node name="ZonaReposicao4" parent="." unique_id=1795585495 instance=ExtResource("24_8xrjd")]
 position = Vector2(1612, 169)
 
-[node name="Menu" parent="." unique_id=1437134340 instance=ExtResource("34_dnh3j")]
+[node name="AreaEstoque" type="Area2D" parent="." unique_id=244574785]
+process_mode = 3
+script = ExtResource("36_mlbvc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaEstoque" unique_id=980294636]
+position = Vector2(2105, 407)
+shape = SubResource("RectangleShape2D_xkggj")
+
+[node name="SomAmbiente" type="AudioStreamPlayer" parent="AreaEstoque" unique_id=1181877773]
+stream = ExtResource("37_xkggj")
+volume_db = -13.0
+
+[node name="Indicador" type="Label" parent="." unique_id=1944977029]
+offset_left = 1467.0
+offset_top = 353.0
+offset_right = 1695.0
+offset_bottom = 386.0
+scale = Vector2(0.31669134, 0.3750524)
+theme_override_colors/font_color = Color(1, 1, 0.05490196, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("16_7i7wm")
+theme_override_font_sizes/font_size = 30
+text = "LIXEIRA [ E ]"
+
+[node name="Menu" parent="." unique_id=1437134340 instance=ExtResource("38_qjlwk")]
 
 [connection signal="body_entered" from="Area2D" to="CharacterBody2D2" method="_on_area_2d_body_entered"]

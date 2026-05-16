@@ -59,11 +59,11 @@ icon = ExtResource("5_xceeb")
 flat = true
 expand_icon = true
 
-[node name="SomClique" type="AudioStreamPlayer2D" parent="MainMenu" unique_id=351027426]
-stream = ExtResource("7_0to7u")
-
-[node name="SomHover" type="AudioStreamPlayer2D" parent="MainMenu" unique_id=999948344]
+[node name="SomHover" type="AudioStreamPlayer2D" parent="." unique_id=999948344]
 stream = ExtResource("6_cppja")
+
+[node name="SomClique" type="AudioStreamPlayer2D" parent="." unique_id=351027426]
+stream = ExtResource("7_0to7u")
 
 [connection signal="confirmed" from="MainMenu/SairDialog" to="MainMenu" method="_on_sair_dialog_confirmed"]
 [connection signal="pressed" from="MainMenu/Mercado" to="MainMenu" method="_on_sair_pressed"]
