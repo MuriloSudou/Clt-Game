@@ -63,9 +63,11 @@ expand_icon = true
 
 [node name="SomClique" type="AudioStreamPlayer2D" parent="MainMenu" unique_id=332849959]
 stream = ExtResource("6_6irkm")
+volume_db = 13.0
 
 [node name="SomHover" type="AudioStreamPlayer2D" parent="MainMenu" unique_id=2105261316]
 stream = ExtResource("7_03443")
+volume_db = 13.0
 
 [connection signal="confirmed" from="MainMenu/SairDialog" to="MainMenu" method="_on_sair_dialog_confirmed"]
 [connection signal="pressed" from="MainMenu/Sair" to="MainMenu" method="_on_sair_pressed"]

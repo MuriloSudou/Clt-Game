@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://dgwsulj55tt7d" path="res://mercado/scenes/Refrigerante.tscn" id="7_1lnwp"]
 [ext_resource type="PackedScene" uid="uid://bwhate8164bt6" path="res://mercado/scenes/lixeira.tscn" id="7_i2o66"]
 [ext_resource type="Texture2D" uid="uid://wh2sp45f2c4p" path="res://mercado/art/toddy (1).png" id="7_wwsav"]
-[ext_resource type="PackedScene" uid="uid://ut0isbdas5e5" path="res://mercado/scenes/copinho.tscn" id="8_1lnwp"]
 [ext_resource type="Texture2D" uid="uid://cvnfxw0yjanld" path="res://mercado/art/todd.png" id="8_wwsav"]
 [ext_resource type="PackedScene" uid="uid://o635a8dp0sq" path="res://mercado/scenes/empilhadeira.tscn" id="11_ltvjc"]
 [ext_resource type="AudioStream" uid="uid://m8e43xw4knc" path="res://mercado/art/Ponto.wav" id="12_dnh3j"]
@@ -43937,7 +43936,7 @@ text = "BATA O PONTO
 
 [node name="SomPonto" type="AudioStreamPlayer2D" parent="RelogioPonto" unique_id=602927943]
 stream = ExtResource("12_dnh3j")
-volume_db = 8.149
+volume_db = 24.0
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="." unique_id=994979375]
 position = Vector2(192, 739)
@@ -44074,26 +44073,11 @@ position = Vector2(1499, 389)
 [node name="Refrigerante" parent="." unique_id=737576668 instance=ExtResource("7_1lnwp")]
 position = Vector2(869, 222)
 
-[node name="Refrigerante2" parent="." unique_id=1455942801 instance=ExtResource("7_1lnwp")]
-position = Vector2(651, 238)
-
 [node name="Caixa2" parent="." unique_id=1996241057 instance=ExtResource("6_hswqy")]
 position = Vector2(611, 540)
 
-[node name="Copinho" parent="." unique_id=1386869146 instance=ExtResource("8_1lnwp")]
-position = Vector2(160, 170)
-
-[node name="Copinho2" parent="." unique_id=1801516626 instance=ExtResource("8_1lnwp")]
-position = Vector2(543, 457)
-
-[node name="Lixo" parent="." unique_id=465255259 instance=ExtResource("5_7e063")]
-position = Vector2(487, 188)
-
 [node name="Lixo2" parent="." unique_id=1193123599 instance=ExtResource("5_7e063")]
 position = Vector2(1516, 504)
-
-[node name="Lixo3" parent="." unique_id=1576276484 instance=ExtResource("5_7e063")]
-position = Vector2(698, 397)
 
 [node name="Lixo4" parent="." unique_id=449148012 instance=ExtResource("5_7e063")]
 position = Vector2(287, 406)
@@ -44340,8 +44324,6 @@ theme_override_fonts/font = ExtResource("16_7i7wm")
 theme_override_font_sizes/font_size = 30
 text = "LIXEIRA [ E ]"
 
-[node name="Menu" parent="." unique_id=1437134340 instance=ExtResource("38_qjlwk")]
-
 [node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=848821121]
 
 [node name="PainelFim" type="Panel" parent="CanvasLayer3" unique_id=108204838]
@@ -44372,5 +44354,7 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("16_7i7wm")
 theme_override_font_sizes/font_size = 20
 text = "Você sobreviveu a mais um dia."
+
+[node name="Menu" parent="." unique_id=1437134340 instance=ExtResource("38_qjlwk")]
 
 [connection signal="body_entered" from="Area2D" to="CharacterBody2D2" method="_on_area_2d_body_entered"]

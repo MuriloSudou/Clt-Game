@@ -16,6 +16,10 @@ func _ready() -> void:
 	# Conecta o efeito hover no botão Escritorio
 	$Escritorio.mouse_entered.connect(_on_hover_enter.bind($Escritorio))
 	$Escritorio.mouse_exited.connect(_on_hover_exit.bind($Escritorio))
+	
+	# Conecta o efeito hover no botão Escritorio
+	$Voltar.mouse_entered.connect(_on_hover_enter.bind($Voltar))
+	$Voltar.mouse_exited.connect(_on_hover_exit.bind($Voltar))
 
 func _on_jogar_pressed() -> void:
 	som_clique.play()                 # Toca o clique
@@ -31,6 +35,11 @@ func _on_escritorio_pressed() -> void:
 	som_clique.play()                 # Toca o clique
 	await som_clique.finished         # Espera o som terminar
 	get_tree().change_scene_to_file("res://mercado/scenes/escritorio.tscn")
+	
+func _on_voltar_pressed() -> void:
+	som_clique.play()                 # Toca o clique
+	await som_clique.finished         # Espera o som terminar
+	get_tree().change_scene_to_file("res://mercado/scenes/main_menu.tscn")
 
 
 func _on_hover_enter(botao: Button) -> void:

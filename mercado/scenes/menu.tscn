@@ -75,11 +75,13 @@ offset_bottom = 309.0
 process_mode = 3
 position = Vector2(32, 7)
 stream = ExtResource("6_llw3u")
+volume_db = 13.0
 
 [node name="SomHover" type="AudioStreamPlayer2D" parent="MenuPause" unique_id=1623458479]
 process_mode = 3
 position = Vector2(32, 7)
 stream = ExtResource("7_egq74")
+volume_db = 13.0
 
 [connection signal="pressed" from="MenuPause/Fundo/Retornar" to="MenuPause" method="_on_retornar_pressed"]
 [connection signal="pressed" from="MenuPause/Fundo/Vmenu" to="MenuPause" method="_on_vmenu_pressed"]

@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cypfswn5v3ouh" path="res://mercado/art/Complet.wav" id="4_6rjyj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_agult"]
-size = Vector2(33, 46)
+size = Vector2(38, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v02cv"]
 size = Vector2(31, 44)
@@ -21,7 +21,7 @@ scale = Vector2(0.25467917, 0.22466432)
 texture = ExtResource("1_2wx2b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lixeira" unique_id=1985491965]
-position = Vector2(0.5, 1)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_agult")
 
 [node name="CorpoSolido" type="StaticBody2D" parent="Lixeira" unique_id=193045550]
