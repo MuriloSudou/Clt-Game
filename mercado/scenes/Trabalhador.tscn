@@ -44342,4 +44342,35 @@ text = "LIXEIRA [ E ]"
 
 [node name="Menu" parent="." unique_id=1437134340 instance=ExtResource("38_qjlwk")]
 
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=848821121]
+
+[node name="PainelFim" type="Panel" parent="CanvasLayer3" unique_id=108204838]
+offset_left = 7.0
+offset_top = -35.0
+offset_right = 1219.0
+offset_bottom = 715.0
+
+[node name="LabelTitulo" type="Label" parent="CanvasLayer3/PainelFim" unique_id=1680034778]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 313.0
+offset_right = 1475.0
+offset_bottom = 340.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("16_7i7wm")
+theme_override_font_sizes/font_size = 30
+text = "EXPEDIENTE FINALIZADO"
+
+[node name="LabelTexto" type="Label" parent="CanvasLayer3/PainelFim" unique_id=1967837660]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 347.0
+offset_right = 692.0
+offset_bottom = 370.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("16_7i7wm")
+theme_override_font_sizes/font_size = 20
+text = "Você sobreviveu a mais um dia."
+
 [connection signal="body_entered" from="Area2D" to="CharacterBody2D2" method="_on_area_2d_body_entered"]

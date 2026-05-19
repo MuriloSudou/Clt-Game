@@ -10,97 +10,110 @@ var missao_concluida = false
 @onready var som_entrega = $SomEntrega
 @onready var som_vitoria = $SomVitoria
 
+
 func _ready():
+
 	body_entered.connect(_ao_entrar_na_zona)
 	body_exited.connect(_ao_sair_na_zona)
-	
+
 	if label_contador:
 		label_contador.text = "Pallets: 0 / 6"
 
+
 func _ao_entrar_na_zona(body):
+
 	if body.is_in_group("pallets"):
+
 		total_pallets += 1
-		
-		# NOVO: Toca o som toda vez que um pallet entra na área
+
+		# TOCA SOM
 		som_entrega.play()
-		
+
 		atualizar_tela()
+
 
 func _ao_sair_na_zona(body):
+
 	if body.is_in_group("pallets"):
+
 		total_pallets -= 1
+
 		if total_pallets < 6:
 			missao_concluida = false
+
 		atualizar_tela()
 
+
 func atualizar_tela():
+
 	if label_contador:
-		# --- AINDA NÃO ACABOU ---
+
+		# AINDA NÃO TERMINOU
 		if total_pallets < 6:
+
 			label_contador.text = "Pallets: " + str(total_pallets) + " / 6"
+
 			label_contador.add_theme_color_override("font_color", Color.WHITE)
-		
-		# --- VITÓRIA ---
+
+		# TODOS OS PALLETS CONCLUÍDOS
 		else:
+
 			label_contador.text = "Pallets: 6 / 6"
+
 			label_contador.add_theme_color_override("font_color", Color.GREEN)
-			
+
 			if not missao_concluida and label_centro:
+
 				missao_concluida = true
+
+				# AVISA O SCRIPT PRINCIPAL
+				get_tree().current_scene.concluir_pallets()
+
+				# MOSTRA MENSAGEM
 				mostrar_vitoria_no_centro()
 
+
 func mostrar_vitoria_no_centro():
-	# NOVO: Toca o som de missão cumprida
+
+	# SOM DE VITÓRIA
 	som_vitoria.play()
 
-	# 1. PARA O CRONÔMETRO
+	# PARA O CRONÔMETRO
 	var timer_node = get_tree().current_scene.find_child("TextoTimer", true, false)
+
 	if timer_node:
 		timer_node.parar()
-		
-	# 2. MOSTRA A MENSAGEM
+
+	# TEXTO CENTRAL
 	label_centro.text = "MISSÃO CUMPRIDA!\nAGORA HORA DE ORGANIZAR O SUPERMERCADO!"
-	label_centro.add_theme_color_override("font_color", Color.GREEN) 
+
+	label_centro.add_theme_color_override("font_color", Color.GREEN)
+
 	label_centro.visible = true
-	
+
+	label_centro.modulate.a = 0.0
+
+	# FADE IN
 	var tween_aparecer = create_tween()
+
 	tween_aparecer.tween_property(label_centro, "modulate:a", 1.0, 1.0)
-	
-	# Fica na tela por 5 segundos para o jogador ver o tempo final dele
+
+	# ESPERA
 	await get_tree().create_timer(5.0).timeout
-	
+
+	# FADE OUT
 	if total_pallets >= 6:
+
 		var tween_sumir = create_tween()
-		# Faz a mensagem central sumir
+
 		tween_sumir.tween_property(label_centro, "modulate:a", 0.0, 2.0)
-		
-		# Faz o cronômetro sumir ao mesmo tempo (usando parallel)
+
 		if timer_node:
 			tween_sumir.parallel().tween_property(timer_node, "modulate:a", 0.0, 2.0)
-			
+
 		await tween_sumir.finished
-		
-		# Desliga a visibilidade dos dois para não gastar processamento
+
 		label_centro.visible = false
+
 		if timer_node:
 			timer_node.visible = false
-			
-	# Faz a mágica do texto aparecer no meio da tela
-	if label_centro:
-		label_centro.text = "MISSÃO CUMPRIDA!\nAGORA HORA DE ORGANIZAR O SUPERMERCADO!"
-		label_centro.add_theme_color_override("font_color", Color("FFD700")) # Amarelo Ouro
-		label_centro.visible = true
-		
-		# Animação de Fade In
-		var tween_aparecer2 = create_tween()
-		tween_aparecer2.tween_property(label_centro, "modulate:a", 1.0, 0.5)
-		
-		# Deixa na tela por 4 segundos
-		await get_tree().create_timer(4.0).timeout
-		
-		# Animação de Fade Out
-		var tween_sumir2 = create_tween()
-		tween_sumir2.tween_property(label_centro, "modulate:a", 0.0, 1.5)
-		await tween_sumir2.finished
-		
-		label_centro.visible = false

@@ -4,8 +4,13 @@ extends Node2D
 # REFERÊNCIAS DE TELA E ÁUDIO
 # ==========================================
 @onready var texto_pontuacao = $CanvasLayer2/TextoPontuacao
-@onready var texto_gondolas = $CanvasLayer2/TextoGondolas # <-- Referência do novo texto!
+@onready var texto_gondolas = $CanvasLayer2/TextoGondolas
 @onready var musica_vitoria = $MusicaVitoria
+
+# PAINEL FINAL
+@onready var painel_fim = $CanvasLayer3/PainelFim
+@onready var label_titulo = $CanvasLayer3/PainelFim/LabelTitulo
+@onready var label_texto = $CanvasLayer3/PainelFim/LabelTexto
 
 # ==========================================
 # VARIÁVEIS DOS LIXOS
@@ -19,57 +24,125 @@ var lixos_recolhidos = 0
 var total_gondolas = 0
 var gondolas_repostas = 0
 
+# ==========================================
+# VARIÁVEL DOS PALLETS
+# ==========================================
+var pallets_concluidos = false
 
+
+# ==========================================
+# READY
+# ==========================================
 func _ready():
-	# 1. Configura a contagem de Lixos
+
+	# ESCONDE O PAINEL FINAL
+	painel_fim.visible = false
+
+	# CONFIGURA LIXOS
 	total_lixos = get_tree().get_nodes_in_group("lixos").size()
 	atualizar_interface_lixos()
-	
-	# 2. Configura a contagem de Gôndolas
+
+	# CONFIGURA GÔNDOLAS
 	total_gondolas = get_tree().get_nodes_in_group("gondolas").size()
 	atualizar_interface_gondolas()
 
 
 # ==========================================
-# MÉTODOS DO LIXO
+# INTERFACE DOS LIXOS
 # ==========================================
 func atualizar_interface_lixos():
-	# Verifica se o nó existe antes de mudar o texto (evita erros nulos)
+
 	if texto_pontuacao:
 		texto_pontuacao.text = "Lixos Limpos: " + str(lixos_recolhidos) + " / " + str(total_lixos)
 
+
+# ==========================================
+# REGISTRA LIXO
+# ==========================================
 func registrar_lixo_depositado():
+
 	lixos_recolhidos += 1
+
 	atualizar_interface_lixos()
-	
-	# Verifica se pegou todos os lixos
-	if lixos_recolhidos == total_lixos:
-		tocar_vitoria()
+
+	verificar_objetivos()
 
 
 # ==========================================
-# MÉTODOS DAS GÔNDOLAS
+# INTERFACE DAS GÔNDOLAS
 # ==========================================
 func atualizar_interface_gondolas():
+
 	if texto_gondolas:
 		texto_gondolas.text = "Repor: " + str(gondolas_repostas) + " / " + str(total_gondolas)
 
+
+# ==========================================
+# REGISTRA REPOSIÇÃO
+# ==========================================
 func registrar_reposicao():
+
 	gondolas_repostas += 1
+
 	atualizar_interface_gondolas()
-	
-	# Verifica se repôs todas as gôndolas
-	if gondolas_repostas == total_gondolas:
-		print("Todas as gôndolas foram repostas!")
-		# Opcional: Se quiser que toque a música de vitória quando terminar de repor,
-		# basta tirar o '#' da linha de baixo:
-		# tocar_vitoria()
+
+	verificar_objetivos()
 
 
 # ==========================================
-# MÉTODOS GERAIS
+# CHAME ESSA FUNÇÃO QUANDO TERMINAR OS PALLETS
+# ==========================================
+func concluir_pallets():
+
+	pallets_concluidos = true
+
+	verificar_objetivos()
+
+
+# ==========================================
+# VERIFICA OBJETIVOS
+# ==========================================
+func verificar_objetivos():
+
+	print("Lixos:", lixos_recolhidos, "/", total_lixos)
+	print("Reposição:", gondolas_repostas, "/", total_gondolas)
+	print("Pallets:", pallets_concluidos)
+
+	if lixos_recolhidos >= total_lixos \
+	and gondolas_repostas >= total_gondolas \
+	and pallets_concluidos == true:
+
+		print("TODAS AS TAREFAS CONCLUÍDAS")
+
+		mostrar_fim_expediente()
+
+# ==========================================
+# MOSTRA FIM DO EXPEDIENTE
+# ==========================================
+func mostrar_fim_expediente():
+
+	painel_fim.visible = true
+
+	label_titulo.text = "EXPEDIENTE FINALIZADO"
+
+	label_texto.text = "✓ Pallets organizados\n" + \
+	"✓ Lixos recolhidos\n" + \
+	"✓ Produtos repostos\n\n" + \
+	"Você sobreviveu a mais um dia de CLT."
+
+	tocar_vitoria()
+
+	await get_tree().create_timer(5.0).timeout
+
+	painel_fim.visible = false
+
+
+# ==========================================
+# SOM DE VITÓRIA
 # ==========================================
 func tocar_vitoria():
+
 	print("Música de vitória tocando!")
-	musica_vitoria.play()
-	# Aqui no futuro você pode chamar uma tela de "Fase Concluída"!
+
+	if musica_vitoria:
+		musica_vitoria.play()
