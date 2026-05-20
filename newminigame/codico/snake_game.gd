@@ -5,6 +5,7 @@ extends Node2D
 @onready var timer = $Timer
 @onready var score_label = $ScoreLabel
 @onready var game_over_label = $GameOverLabel
+@onready var eat_sound = $EatSound
 
 var grid_size = 20
 var direction = Vector2.RIGHT
@@ -77,6 +78,9 @@ func move_snake():
 	if new_head == food_position:
 		grow = true
 		score += 1
+	
+		eat_sound.play()
+	
 		score_label.text = "Score: " + str(score)
 		spawn_food()
 

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dbo5hisy8nlew"]
 
 [ext_resource type="Script" uid="uid://dk46e4ku8esqk" path="res://newminigame/codico/snake_game.gd" id="1_iut4f"]
+[ext_resource type="AudioStream" uid="uid://bln55xtm08hw6" path="res://newminigame/art/Mario-Coin-Sound-Sound-Effect-_HD_-Gaming-Sound-FX-_youtube_.wav" id="2_hpwpi"]
 
 [node name="SnakeGame" type="Node2D" unique_id=121407006]
 script = ExtResource("1_iut4f")
@@ -28,5 +29,9 @@ offset_left = 276.0
 offset_top = 172.0
 offset_right = 316.0
 offset_bottom = 195.0
+
+[node name="EatSound" type="AudioStreamPlayer" parent="." unique_id=1415625626]
+stream = ExtResource("2_hpwpi")
+volume_db = -20.163
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

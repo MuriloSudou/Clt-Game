@@ -175,3 +175,17 @@ scale = Vector2(0.85017914, 0.85017914)
 texture = ExtResource("17_rysoc")
 
 [node name="Menu" parent="." unique_id=1437134340 instance=ExtResource("17_se3tc")]
+
+[node name="R" type="Label" parent="." unique_id=322082441]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 127.0
+offset_bottom = 39.0
+text = "R -> Restart"
+
+[node name="ESC" type="Label" parent="." unique_id=223607531]
+offset_left = 16.0
+offset_top = 39.0
+offset_right = 111.0
+offset_bottom = 62.0
+text = "ESC -> Menu"

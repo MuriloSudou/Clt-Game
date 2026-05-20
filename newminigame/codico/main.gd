@@ -5,6 +5,8 @@ extends Node2D
 @onready var boss_warning = $BossWarning
 @onready var boss_timer = $TimerBoss
 @onready var boss_game_over = $BossGameOver
+@onready var boss_warning_sfx = $BossWarningSfx
+@onready var boss_gameover_sfx = $BossGameOverSfx
 
 var is_working = false
 var game_over_flag = false
@@ -47,6 +49,7 @@ func _on_timer_boss_timeout():
 
 func show_boss_warning():
 	boss_warning.visible = true
+	boss_warning_sfx.play()
 	boss_warning.modulate.a = 0
 
 	# ✨ fade in (funciona pausado)
@@ -74,4 +77,5 @@ func trigger_game_over():
 	
 	boss_warning.visible = false
 	boss_game_over.visible = true
+	boss_gameover_sfx.play()
 	boss_game_over.scale = Vector2(2, 2)
