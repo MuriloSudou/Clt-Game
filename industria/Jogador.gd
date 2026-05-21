@@ -4,14 +4,14 @@ extends CharacterBody2D
 # ATENÇÃO: Verifique se o nome do seu arquivo é exatamente "caixa.tscn"
 const CENA_CAIXA = preload("res://industria/caixa.tscn")
 const SPEED = 300
-const FORCA_EMPURRAO = 800.0
+const FORCA_EMPURRAO = 900.0
 
 @onready var som_soco = $SomSoco # <--- ADICIONE ESTA LINHA AQUI!
 @onready var animacao = $AnimatedSprite2D
 @onready var hitbox = $HitBox
 @onready var hitbox_colisao = $HitBox/HitBox	
 @onready var item_segurado = $ItemSegurado
-var vida: int = 4
+var vida: int = 6
 @onready var som_dano = $SomDano
 @onready var icone_relogio = $MenosRelogio
 @onready var mais_relogio = $MaisRelogio
@@ -102,11 +102,22 @@ func bater():
 			
 		elif corpo is StaticBody2D: # ADICIONE ESTAS DUAS LINHAS! Se bater em algo estático (como a Máquina)
 			acertou_algo = true 
+			
+	for area in hitbox.get_overlapping_areas():
+		if area.has_method("sofrer_parry"):
+			area.sofrer_parry(global_position)
+
 
 	# Se depois de checar tudo, a flag for verdadeira, toca o som!
 	if acertou_algo:
 		som_soco.play()
-		
+	# --- NOVO PARRY ATIVO ---
+	# A sua HitBox procura quem está na área do soco
+	for corpo in hitbox.get_overlapping_bodies():
+		if corpo.has_method("sofrer_parry"):
+			corpo.sofrer_parry(global_position)
+	# ------------------------
+	
 	await animacao.animation_finished 
 	hitbox_colisao.disabled = true # Desliga a área do soco
 	esta_batendo = false
@@ -142,7 +153,18 @@ func soltar_item():
 	# get_parent() pega o nó "Mundo" (que é o pai do Jogador) e coloca a caixa lá dentro.
 	get_parent().add_child(nova_caixa)
 	
-func tomar_dano():
+func tomar_dano(atacante = null):
+	# 1. O SISTEMA DE PARRY (A Mágica acontece aqui)
+	if esta_batendo and atacante != null:
+		if atacante.has_method("sofrer_parry"):
+			atacante.sofrer_parry(global_position) # Manda o inimigo voar
+			print("🛡️ PARRY BEM SUCEDIDO!")
+			return # O 'return' aborta a função. Você NÃO perde vida!
+
+	# 2. O SISTEMA DE ESCUDO (Que fizemos antes)
+	if tem_escudo:
+		print("🛡️ Dano bloqueado pelo escudo!")
+		return
 	
 	if tem_escudo:
 		print("🛡️ Dano bloqueado pelo escudo!")
@@ -244,3 +266,7 @@ func _on_timer_escudo_timeout():
 	icone_escudo.hide()
 	print("⚠️ O escudo quebrou/acabou!")
 	
+
+
+func _on_timer_letra_timeout() -> void:
+	pass # Replace with function body.

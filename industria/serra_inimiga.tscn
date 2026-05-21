@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://b86io4ufi4syr" path="res://industria/ChatGPT Image 21 de abr. de 2026, 10_32_57.png" id="3_3rhxw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5pbq"]
-radius = 28.071337
+radius = 31.06445
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ictuc"]
-radius = 44.011364
+radius = 35.0
 
 [node name="SerraInimiga" type="CharacterBody2D" unique_id=1135288295]
 script = ExtResource("1_ubjpp")
@@ -25,6 +25,7 @@ shape = SubResource("CircleShape2D_ictuc")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1630698689]
 stream = ExtResource("2_h3mu3")
+volume_db = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1849677758]
 position = Vector2(7.6293945e-06, 1)

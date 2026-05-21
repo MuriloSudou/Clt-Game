@@ -7,14 +7,11 @@
 [ext_resource type="AudioStream" uid="uid://tnlhifase42l" path="res://industria/4379051-steampunk-garage-142325.mp3" id="6_5ckkb"]
 [ext_resource type="PackedScene" uid="uid://6uqs20sk2cwn" path="res://industria/zona_entregas.tscn" id="7_t8jxu"]
 [ext_resource type="Script" uid="uid://cb8w8e55n05id" path="res://industria/interface.gd" id="8_pfhxm"]
-[ext_resource type="FontFile" uid="uid://33vyhgo72t4y" path="res://mercado/art/Daydream DEMO.otf" id="9_2r6c1"]
 [ext_resource type="FontFile" uid="uid://dlvcymiwsgam8" path="res://industria/Pixeled.ttf" id="9_pij3u"]
 [ext_resource type="AudioStream" uid="uid://c72tsc7hok6df" path="res://industria/freesound_community-dramatic-synth-echo-43970.mp3" id="10_0oi55"]
-[ext_resource type="Texture2D" uid="uid://cfs2smr5ofc2c" path="res://industria/ChatGPT Image 20 de mai. de 2026, 16_28_38.png" id="11_0y35h"]
 [ext_resource type="PackedScene" uid="uid://cpsws03dumc5i" path="res://industria/inimigo.tscn" id="11_57gmc"]
 [ext_resource type="AudioStream" uid="uid://bha6ec1cdf3h8" path="res://industria/freesound_community-goodresult-82807.mp3" id="12_5g5eo"]
 [ext_resource type="PackedScene" uid="uid://cdjt2bb8o2t0u" path="res://industria/inimigo_aleatorio.tscn" id="12_57gmc"]
-[ext_resource type="FontFile" uid="uid://gemfjyw8xrqi" path="res://mercado/art/VCR_OSD_MONO_1.001.ttf" id="14_0y35h"]
 [ext_resource type="PackedScene" uid="uid://m5lv5atk4g32" path="res://industria/perseguidor.tscn" id="16_qobow"]
 [ext_resource type="PackedScene" uid="uid://cpsj3dja5b7f6" path="res://industria/amigo_tempo.tscn" id="17_744hw"]
 [ext_resource type="PackedScene" uid="uid://na6x1ufk7krw" path="res://industria/cafeteira.tscn" id="19_524fl"]
@@ -24,14 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://fl8bc3pedi24" path="res://industria/Prego.tscn" id="21_ib6nj"]
 [ext_resource type="PackedScene" uid="uid://dumvrm5o3221" path="res://industria/pregadeira.tscn" id="22_2f10a"]
 [ext_resource type="Texture2D" uid="uid://b8cfq5nv84mxs" path="res://industria/ChatGPT Image 26 de abr. de 2026, 22_36_09.png" id="23_bw04d"]
-[ext_resource type="PackedScene" uid="uid://c1ypc2talci6q" path="res://industria/pregadeira_fast.tscn" id="23_q1nmq"]
+[ext_resource type="Script" uid="uid://b0h5ysns4n5dw" path="res://industria/interface_cutscene.gd" id="23_q1nmq"]
+[ext_resource type="Texture2D" uid="uid://cg8bfi86am53q" path="res://industria/patrick-removebg-preview.png" id="24_0y35h"]
 [ext_resource type="PackedScene" uid="uid://vkdrwu7be00m" path="res://industria/maquina_defeituosa.tscn" id="24_q1nmq"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_g2w54"]
-font = ExtResource("9_2r6c1")
-font_size = 26
-font_color = Color(1, 1, 0, 1)
-shadow_size = 19
+[ext_resource type="AudioStream" uid="uid://dj5nvfv7i3f7h" path="res://industria/somvoz.mp3" id="25_g2w54"]
+[ext_resource type="AudioStream" uid="uid://bw0ixtmalt24s" path="res://industria/blip.mp3" id="26_jo0jy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5g5eo"]
 font = ExtResource("9_pij3u")
@@ -43,7 +37,7 @@ shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_57gmc"]
 font = ExtResource("9_pij3u")
-font_size = 33
+font_size = 28
 font_color = Color(0.7181006, 1.4679879e-06, 6.738305e-07, 1)
 shadow_size = 5
 shadow_color = Color(0, 0, 0, 0.88235295)
@@ -53,25 +47,21 @@ stacked_shadow_0/color = Color(1, 1, 1, 0.49411765)
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwdvv"]
 font = ExtResource("9_pij3u")
-font_size = 32
+font_size = 21
 font_color = Color(0.0702335, 0.44620693, 0.74846935, 1)
-shadow_size = 15
-shadow_color = Color(0, 0, 0, 1)
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.57254905)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0crsg"]
 font = ExtResource("9_pij3u")
-font_size = 25
+font_size = 20
 font_color = Color(0.971, 1, 0.13, 1)
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 23
 shadow_color = Color(0, 0, 0, 0.9019608)
 
-[sub_resource type="LabelSettings" id="LabelSettings_jo0jy"]
-font = ExtResource("14_0y35h")
-font_size = 18
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57gmc"]
-size = Vector2(1546.7731, 40.624367)
+size = Vector2(1307.5461, 23.248657)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q1nmq"]
 size = Vector2(380, 20)
@@ -84,7 +74,7 @@ size = Vector2(20, 95)
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=76448947]
 light_mask = 524289
 visibility_layer = 524288
-position = Vector2(588.99994, 347.00003)
+position = Vector2(583, 347)
 scale = Vector2(0.89514977, 0.6060606)
 texture = ExtResource("23_bw04d")
 
@@ -96,18 +86,18 @@ region_enabled = true
 region_rect = Rect2(119.40001, 0, 330.59998, 450)
 
 [node name="Sprite2D3" type="Sprite2D" parent="." unique_id=2026727577]
-position = Vector2(326.75, 599)
-scale = Vector2(0.17641683, 0.08771934)
+position = Vector2(346, 598)
+scale = Vector2(0.1407678, 0.08771934)
 texture = ExtResource("3_bw04d")
 
 [node name="Sprite2D4" type="Sprite2D" parent="." unique_id=223755515]
-position = Vector2(785.00006, 602)
+position = Vector2(741, 599)
 scale = Vector2(0.1407678, 0.08771934)
 texture = ExtResource("3_bw04d")
 flip_h = true
 
 [node name="Jogador" parent="." unique_id=802960982 instance=ExtResource("2_wg8ei")]
-position = Vector2(531, 502)
+position = Vector2(557, 457)
 
 [node name="ZonaEntregas" parent="." unique_id=369419263 instance=ExtResource("7_t8jxu")]
 z_index = -1
@@ -126,12 +116,11 @@ playback_type = 1
 script = ExtResource("8_pfhxm")
 
 [node name="TextoPontos" type="Label" parent="Interface" unique_id=683362133]
-offset_left = 489.0
-offset_top = 51.0
-offset_right = 576.0
-offset_bottom = 112.0
+offset_left = 35.0
+offset_top = 13.0
+offset_right = 75.0
+offset_bottom = 36.0
 text = "0"
-label_settings = SubResource("LabelSettings_g2w54")
 
 [node name="TextoTempo" type="Label" parent="Interface" unique_id=357228041]
 offset_left = 953.0
@@ -148,10 +137,10 @@ autostart = true
 [node name="TextoFimDeJogo" type="Label" parent="Interface" unique_id=763851612]
 visible = false
 modulate = Color(1, 0, 0, 1)
-offset_left = 114.0
-offset_top = 226.0
-offset_right = 1071.0
-offset_bottom = 319.0
+offset_left = 185.0
+offset_top = 229.0
+offset_right = 997.0
+offset_bottom = 308.0
 size_flags_horizontal = 4
 text = "VOCÊ FOI DEMITIDO POR JUSTA CAUSA"
 label_settings = SubResource("LabelSettings_57gmc")
@@ -163,10 +152,10 @@ process_mode = 3
 stream = ExtResource("10_0oi55")
 
 [node name="TextoVida" type="Label" parent="Interface" unique_id=787778715]
-offset_left = 32.0
+offset_left = 100.0
 offset_top = 13.0
-offset_right = 250.0
-offset_bottom = 112.0
+offset_right = 263.0
+offset_bottom = 81.0
 text = "Vidas : 4"
 label_settings = SubResource("LabelSettings_lwdvv")
 
@@ -181,35 +170,19 @@ text = "Jogar Novamente"
 
 [node name="TextoVitoria" type="Label" parent="Interface" unique_id=850292540]
 visible = false
-offset_left = 144.0
+offset_left = 185.0
 offset_top = 239.0
-offset_right = 1074.0
-offset_bottom = 307.0
+offset_right = 961.0
+offset_bottom = 295.0
 text = "PARÁBENS VOCÊ GANHOU UM BOM BOM DA EMPRESA"
 label_settings = SubResource("LabelSettings_0crsg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="Interface/TextoVitoria" unique_id=936820349]
-position = Vector2(809.00006, 241)
-rotation = -0.2617994
-scale = Vector2(0.48967996, 0.5827629)
-texture = ExtResource("11_0y35h")
-
 [node name="MusicaVitoria" type="AudioStreamPlayer" parent="Interface" unique_id=1467824051]
 process_mode = 3
 stream = ExtResource("12_5g5eo")
 volume_db = 5.248
-
-[node name="Label" type="Label" parent="Interface" unique_id=1732804878]
-offset_left = 22.0
-offset_top = 99.0
-offset_right = 219.0
-offset_bottom = 421.0
-text = "Movimentação: W A S D
-Pegar item: E
-Bater: Space"
-label_settings = SubResource("LabelSettings_jo0jy")
 
 [node name="Caixa2" parent="." unique_id=1848157543 instance=ExtResource("3_otwa2")]
 position = Vector2(739, 552)
@@ -218,49 +191,54 @@ position = Vector2(739, 552)
 position = Vector2(346, 553)
 
 [node name="Caixa4" parent="." unique_id=2067781161 instance=ExtResource("3_otwa2")]
-position = Vector2(710, 448)
+position = Vector2(944, 568)
 
 [node name="Caixa5" parent="." unique_id=1745716260 instance=ExtResource("3_otwa2")]
-position = Vector2(634, 470)
+position = Vector2(611, 457)
 
 [node name="Caixa6" parent="." unique_id=2031009598 instance=ExtResource("3_otwa2")]
-position = Vector2(477, 440)
+position = Vector2(908, 606)
 
 [node name="Caixa7" parent="." unique_id=1029532662 instance=ExtResource("3_otwa2")]
-position = Vector2(415, 455)
+position = Vector2(375, 502)
 
 [node name="Caixa8" parent="." unique_id=610077851 instance=ExtResource("3_otwa2")]
-position = Vector2(675, 282)
+position = Vector2(675, 457)
 
 [node name="Caixa9" parent="." unique_id=603734426 instance=ExtResource("3_otwa2")]
-position = Vector2(925, 587)
+position = Vector2(739, 498)
 
 [node name="Caixa10" parent="." unique_id=108320478 instance=ExtResource("3_otwa2")]
-position = Vector2(1111, 421)
+position = Vector2(672, 522)
 
 [node name="Caixa11" parent="." unique_id=334478107 instance=ExtResource("3_otwa2")]
-position = Vector2(576, 428)
+position = Vector2(375, 425)
 
 [node name="Caixa12" parent="." unique_id=1420431491 instance=ExtResource("3_otwa2")]
-position = Vector2(346, 239)
+position = Vector2(286, 399)
 
 [node name="Inimigo" parent="." unique_id=70553238 instance=ExtResource("11_57gmc")]
-position = Vector2(-84, 360)
-velocidade = 600.0
+position = Vector2(-98, 348)
+velocidade = 800.0
 distancia_maxima = 2000.0
 
+[node name="Inimigo2" parent="." unique_id=1742363926 instance=ExtResource("11_57gmc")]
+position = Vector2(-98, 308)
+velocidade = 200.0
+distancia_maxima = 1300.0
+
 [node name="Inimigo3" parent="." unique_id=2098017329 instance=ExtResource("11_57gmc")]
-position = Vector2(1226, 326)
-velocidade = -500.0
+position = Vector2(1219, 308)
+velocidade = -600.0
 distancia_maxima = 1500.0
 
 [node name="InimigoAleatorio" parent="." unique_id=204652844 instance=ExtResource("12_57gmc")]
-position = Vector2(-218, 733)
+position = Vector2(-84, 472)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2133554645]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1130141617]
-position = Vector2(577, 112)
+position = Vector2(582, 76)
 shape = SubResource("RectangleShape2D_57gmc")
 debug_color = Color(0.671101, 0.4999563, 0.27286312, 0.41960785)
 
@@ -271,13 +249,13 @@ shape = SubResource("RectangleShape2D_57gmc")
 debug_color = Color(0.671101, 0.4999563, 0.27286312, 0.41960785)
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1006218656]
-position = Vector2(-8.68785, 279.38654)
+position = Vector2(0, 399)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_57gmc")
 debug_color = Color(0.671101, 0.4999563, 0.27286312, 0.41960785)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1563944521]
-position = Vector2(577, 636)
+position = Vector2(577, 655)
 scale = Vector2(0.99417454, 0.9869768)
 shape = SubResource("RectangleShape2D_57gmc")
 debug_color = Color(0.671101, 0.4999563, 0.27286312, 0.41960785)
@@ -307,13 +285,13 @@ position = Vector2(296, 490.5)
 shape = SubResource("RectangleShape2D_2r6c1")
 
 [node name="Perseguidor" parent="." unique_id=131279625 instance=ExtResource("16_qobow")]
-position = Vector2(1049, 276)
+position = Vector2(1315, 200)
 
 [node name="AmigoTempo" parent="." unique_id=965168435 instance=ExtResource("17_744hw")]
 position = Vector2(672, 576)
 
 [node name="AmigoTempo2" parent="." unique_id=1410008110 instance=ExtResource("17_744hw")]
-position = Vector2(1116, 157)
+position = Vector2(1105, 165)
 
 [node name="AmigoTempo3" parent="." unique_id=613399681 instance=ExtResource("17_744hw")]
 position = Vector2(1049, 568)
@@ -325,10 +303,11 @@ position = Vector2(0, 7)
 position = Vector2(-105, -21)
 
 [node name="SerraInimiga" parent="." unique_id=1135288295 instance=ExtResource("20_524fl")]
-position = Vector2(176, 243)
+position = Vector2(-231, 113)
+velocidade = 600.0
 
 [node name="Pregadeira" parent="." unique_id=117435530 instance=ExtResource("22_2f10a")]
-position = Vector2(675, 153)
+position = Vector2(675, 151)
 
 [node name="MaquinaDefeituosa" parent="." unique_id=1941281303 instance=ExtResource("24_q1nmq")]
 position = Vector2(908, 132)
@@ -339,18 +318,47 @@ position = Vector2(56, 598)
 [node name="EstacaoEscudo" parent="." unique_id=1504857008 instance=ExtResource("20_ib6nj")]
 position = Vector2(1111, 602)
 
-[node name="pregadeira_fast" parent="." unique_id=1949221188 instance=ExtResource("23_q1nmq")]
-position = Vector2(346, 153)
+[node name="InterfaceCutscene" type="CanvasLayer" parent="." unique_id=1183023041]
+script = ExtResource("23_q1nmq")
 
-[node name="InimigoAleatorio2" parent="." unique_id=285267173 instance=ExtResource("12_57gmc")]
-position = Vector2(-140, 757)
-velocidade = 200.0
+[node name="CaixaTexto" type="Panel" parent="InterfaceCutscene" unique_id=1427262385]
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="InimigoAleatorio3" parent="." unique_id=1728725911 instance=ExtResource("12_57gmc")]
-position = Vector2(-77, 733)
+[node name="Label" type="Label" parent="InterfaceCutscene/CaixaTexto" unique_id=482288057]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="InterfaceCutscene/CaixaTexto" unique_id=1782590097]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+bbcode_enabled = true
+text = "pao de batata
+"
+
+[node name="Retrato" type="TextureRect" parent="InterfaceCutscene" unique_id=2050143577]
+offset_left = 710.0
+offset_top = 76.0
+offset_right = 1221.0
+offset_bottom = 636.0
+texture = ExtResource("24_0y35h")
+
+[node name="SomVoz" type="AudioStreamPlayer2D" parent="InterfaceCutscene" unique_id=803497819]
+stream = ExtResource("25_g2w54")
+volume_db = 1.0
+
+[node name="SomProximo" type="AudioStreamPlayer" parent="InterfaceCutscene" unique_id=1405691129]
+stream = ExtResource("26_jo0jy")
+volume_db = 2.22
+
+[node name="TimerLetra" type="Timer" parent="InterfaceCutscene" unique_id=758989580]
+wait_time = 0.3
 
 [connection signal="timeout" from="Interface/TempoFase" to="Interface" method="_on_tempo_fase_timeout"]
 [connection signal="pressed" from="Interface/BotaoReiniciar" to="Interface" method="_on_botao_reiniciar_pressed"]
 [connection signal="body_entered" from="AmigoTempo" to="AmigoTempo" method="_on_body_entered"]
 [connection signal="body_entered" from="AmigoTempo2" to="AmigoTempo2" method="_on_body_entered"]
 [connection signal="body_entered" from="AmigoTempo3" to="AmigoTempo3" method="_on_body_entered"]
+[connection signal="timeout" from="InterfaceCutscene/TimerLetra" to="Jogador" method="_on_timer_letra_timeout"]

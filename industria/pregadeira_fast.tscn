@@ -1,20 +1,20 @@
-[gd_scene format=3 uid="uid://dumvrm5o3221"]
+[gd_scene format=3 uid="uid://c1ypc2talci6q"]
 
-[ext_resource type="Script" uid="uid://bjgpwpovxmuct" path="res://industria/pregadeira.gd" id="1_rmufs"]
-[ext_resource type="Texture2D" uid="uid://besayqwpqd2r2" path="res://industria/pregadeira.png" id="2_y6thm"]
+[ext_resource type="Script" uid="uid://bjgpwpovxmuct" path="res://industria/pregadeira.gd" id="1_5egsk"]
+[ext_resource type="Texture2D" uid="uid://besayqwpqd2r2" path="res://industria/pregadeira.png" id="2_jqrut"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2swj"]
 size = Vector2(20, 37)
 
-[node name="pregadeira" type="StaticBody2D" unique_id=117435530]
-script = ExtResource("1_rmufs")
+[node name="pregadeira_fast" type="StaticBody2D" unique_id=117435530]
+script = ExtResource("1_5egsk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1828331564]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j2swj")
 
 [node name="Timer" type="Timer" parent="." unique_id=1507534553]
-wait_time = 4.0
+wait_time = 2.553
 autostart = true
 
 [node name="CanoBaixo" type="Marker2D" parent="." unique_id=1829381060]
@@ -22,7 +22,7 @@ position = Vector2(0, 31)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=281096199]
 scale = Vector2(0.2947917, 0.32708335)
-texture = ExtResource("2_y6thm")
+texture = ExtResource("2_jqrut")
 flip_v = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

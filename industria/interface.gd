@@ -2,7 +2,7 @@ extends CanvasLayer
 
 var pontos = 0
 # Defina aqui quantas caixas o jogador precisa entregar para ganhar!
-var pontos_para_vencer = 3
+var pontos_para_vencer = 7
 
 @onready var texto_pontos = $TextoPontos
 @onready var texto_tempo = $TextoTempo

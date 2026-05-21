@@ -4,21 +4,23 @@
 [ext_resource type="Texture2D" uid="uid://dwf5jq28ncf7m" path="res://industria/prego.png" id="2_xyp1s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cot6j"]
-size = Vector2(9, 18)
+size = Vector2(9, 37)
 
 [node name="prego" type="Area2D" unique_id=860778513]
 script = ExtResource("1_dqdvl")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=905168000]
-position = Vector2(0, 1.9073486e-06)
-scale = Vector2(0.027542375, 0.032844983)
+modulate = Color(0.5194127, 0.5194127, 0.5194127, 1)
+position = Vector2(0, 9.536743e-07)
+scale = Vector2(0.060381353, 0.07124291)
 texture = ExtResource("2_xyp1s")
 flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=702642649]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_cot6j")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=414043713]
-rect = Rect2(-5, -9, 10, 18)
+rect = Rect2(-5, -19, 10, 37)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -43,4 +43,11 @@ func _on_body_entered(body):
 	if body.name == "Jogador":
 		# Em vez de game over direto, manda o jogador tomar dano!
 		if body.has_method("tomar_dano"):
-			body.tomar_dano()
+			body.tomar_dano() 
+			
+	# --- NOVO: SISTEMA DE FOGO AMIGO ---
+	# Se quem encostou tem a função de voar (Perseguidor) e não é o próprio Inimigo
+	elif body.has_method("sofrer_parry") and body.name != self.name:
+		print("💥 O Inimigo de patrulha atropelou o Perseguidor!")
+		body.sofrer_parry(global_position) # Manda o Perseguidor voar!
+	# -----------------------------------

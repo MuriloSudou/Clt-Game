@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://dfs5b2x3g5gmk" path="res://industria/maquinaqbrando.mp3" id="5_dhw21"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7okkc"]
-size = Vector2(221, 118.75)
+size = Vector2(280, 130)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhw21"]
 size = Vector2(328, 187)
@@ -21,13 +21,13 @@ scale = Vector2(0.32702637, 0.24304198)
 texture = ExtResource("1_u2vn0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=827127080]
-position = Vector2(-11.5, 15.375)
+position = Vector2(2, 21)
 shape = SubResource("RectangleShape2D_7okkc")
 
 [node name="ZonaDeConserto" type="Area2D" parent="." unique_id=1935022225]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaDeConserto" unique_id=2006657745]
-position = Vector2(1, 32.5)
+position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_dhw21")
 debug_color = Color(0.9166715, 0.25319475, 0.35876617, 0.41960785)
 

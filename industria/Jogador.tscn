@@ -297,7 +297,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"baterB",
-"speed": 11.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -320,7 +320,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"baterC",
-"speed": 11.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -343,7 +343,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"baterD",
-"speed": 11.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -366,7 +366,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"baterE",
-"speed": 11.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -521,10 +521,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fw4w5"]
-size = Vector2(25, 44.5)
+size = Vector2(25, 24.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aou4a"]
-size = Vector2(47, 63.5)
+size = Vector2(49.5, 70.75)
 
 [node name="Jogador" type="CharacterBody2D" unique_id=802960982 groups=["jogador"]]
 script = ExtResource("1_r30ic")
@@ -534,7 +534,7 @@ sprite_frames = SubResource("SpriteFrames_py6jr")
 animation = &"baterB"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=176969428]
-position = Vector2(0, 2.25)
+position = Vector2(0, 12.25)
 shape = SubResource("RectangleShape2D_fw4w5")
 
 [node name="ItemSegurado" type="Sprite2D" parent="." unique_id=1487021185]
@@ -546,6 +546,7 @@ texture = ExtResource("3_7iymn")
 [node name="HitBox" type="Area2D" parent="." unique_id=1935114849]
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBox" unique_id=1083338570]
+position = Vector2(-1.25, 3.625)
 shape = SubResource("RectangleShape2D_aou4a")
 disabled = true
 

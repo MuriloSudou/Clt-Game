@@ -59,3 +59,16 @@ func efeito_de_choque():
 	sprite.modulate = Color(0.039, 0.51, 0.98, 0.639) 
 	var tween = create_tween()
 	tween.tween_property(sprite, "modulate", Color(1, 1, 1), 0.3)
+func sofrer_parry(posicao_do_jogador: Vector2):
+	print("😵 Fui rebatido!")
+	
+	# Calcula para que lado o inimigo deve voar (a direção contrária do jogador)
+	var direcao_empurrao = (global_position - posicao_do_jogador).normalized()
+	
+	# Aplica uma força gigante para trás! 
+	# (Se a variável de movimento do seu inimigo se chamar 'velocity', use ela)
+	velocity = direcao_empurrao * 800 
+	move_and_slide() # Aplica o empurrão instantaneamente
+	
+	# Opcional: Se você tiver uma variável que faz ele caçar (ex: 'estado'), 
+	# você pode colocar um Timer aqui para deixá-lo atordoado por 2 segundos!

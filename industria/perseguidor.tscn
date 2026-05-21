@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://m5lv5atk4g32"]
 
-[ext_resource type="Script" uid="uid://c5bx4i6j372e8" path="res://perseguidor.gd" id="1_0ga16"]
-[ext_resource type="Texture2D" uid="uid://cjb8p531atlk6" path="res://character-spritesheet(1).png" id="2_iv871"]
+[ext_resource type="Script" uid="uid://c5bx4i6j372e8" path="res://industria/perseguidor.gd" id="1_0ga16"]
+[ext_resource type="Texture2D" uid="uid://cjb8p531atlk6" path="res://industria/character-spritesheet(1).png" id="2_iv871"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qobow"]
-size = Vector2(31, 50)
+size = Vector2(30, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrl5c"]
 atlas = ExtResource("2_iv871")
@@ -301,13 +301,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_744hw"]
-size = Vector2(49, 58)
+size = Vector2(36, 53)
 
 [node name="Perseguidor" type="CharacterBody2D" unique_id=131279625]
 script = ExtResource("1_0ga16")
+velocidade = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1862732281]
-position = Vector2(-0.69799805, -1.4558105)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_qobow")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1222161886]
@@ -319,7 +320,7 @@ animation = &"andarB"
 [node name="SensorRoubo" type="Area2D" parent="." unique_id=1723244588]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SensorRoubo" unique_id=1304811558]
-position = Vector2(-0.5, -3)
+position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_744hw")
 
 [connection signal="body_entered" from="SensorRoubo" to="." method="_on_sensor_roubo_body_entered"]

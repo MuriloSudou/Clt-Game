@@ -13,7 +13,7 @@ extends StaticBody2D
 var esta_quebrada: bool = false
 var jogador_perto: bool = false
 var posicao_original_sprite: Vector2
-var socos_necessarios: int = 3
+var socos_necessarios: int = 5
 var socos_dados: int = 0
 
 func _ready():

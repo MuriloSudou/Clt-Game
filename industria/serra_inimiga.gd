@@ -35,3 +35,22 @@ func _on_sensor_dano_body_entered(body):
 	if body.has_method("tomar_dano"):
 		print("O alvo sabe tomar dano! Cortando...")
 		body.tomar_dano()
+# --- SISTEMA DE PARRY DA SERRA ---
+func sofrer_parry(posicao_do_jogador: Vector2):
+	print("🪚 A serra levou parry e inverteu a direção!")
+	
+	# Inverte a velocidade (se ia para a frente, vai para trás e vice-versa)
+	velocidade = -velocidade
+	
+	# Vira a imagem da serra para o lado correto
+	sprite.flip_h = !sprite.flip_h
+	
+	# Dá um empurrãozinho instantâneo de 30 pixels para ela desgrudar do jogador
+	var direcao_empurrao = sign(global_position.x - posicao_do_jogador.x)
+	if direcao_empurrao == 0: 
+		direcao_empurrao = 1
+	global_position.x += direcao_empurrao * 30
+	
+	# Como ela virou de costas, o ponto inicial dela tem de ser redefinido 
+	# para ela não se teletransportar acidentalmente
+	#posicao_inicial = global_position
